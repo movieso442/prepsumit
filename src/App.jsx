@@ -8,6 +8,7 @@ import LessonView from './pages/LessonView';
 import Dashboard from './pages/Dashboard';
 import Signup from './pages/Signup';
 import Checkout from './pages/Checkout';
+import Login from './pages/Login';
 
 import { coursesData, userStatsData } from './data/courses';
 import { Award, Sparkles } from 'lucide-react';
@@ -185,6 +186,12 @@ export default function App() {
           />
         )}
 
+        {activePage === 'login' && (
+          <Login 
+            setActivePage={setActivePage}
+          />
+        )}
+
         {activePage === 'checkout' && (
           <Checkout 
             signupData={signupData}
@@ -246,8 +253,8 @@ export default function App() {
         </div>
       )}
 
-      {/* Footer Branding Links */}
-      <Footer setActivePage={setActivePage} />
+      {/* Footer Branding Links - Hidden on login screen to use auth-specific footer */}
+      {activePage !== 'login' && <Footer setActivePage={setActivePage} />}
     </div>
   );
 }

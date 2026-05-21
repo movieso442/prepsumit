@@ -167,7 +167,7 @@ export default function Navbar({ activePage, setActivePage, darkMode, setDarkMod
 
           {/* Log In Button - White background, blue-teal border and text */}
           <button 
-            onClick={() => setActivePage('dashboard')}
+            onClick={() => setActivePage('login')}
             style={{
               backgroundColor: '#ffffff',
               border: '1.5px solid #13809c',
@@ -280,7 +280,7 @@ export default function Navbar({ activePage, setActivePage, darkMode, setDarkMod
           {/* Quick Mobile Action Links */}
           <div style={{ display: 'flex', gap: '12px', marginTop: '8px', borderTop: '1px solid #f2f6f9', paddingTop: '16px' }}>
             <button 
-              onClick={() => { setActivePage('dashboard'); setMobileMenuOpen(false); }}
+              onClick={() => { setActivePage('login'); setMobileMenuOpen(false); }}
               style={{
                 flex: 1,
                 backgroundColor: '#ffffff',
