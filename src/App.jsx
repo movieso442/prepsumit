@@ -129,6 +129,8 @@ export default function App() {
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         user={userStats}
+        courses={coursesData}
+        onSelectCourse={handleSelectCourse}
       />
 
       {/* Main Core View Area */}

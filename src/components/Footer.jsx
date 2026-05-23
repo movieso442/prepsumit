@@ -165,6 +165,7 @@ export default function Footer({ setActivePage }) {
         
         {/* Contact and Copyright */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxWidth: '750px' }}>
+          <span>Florida Teacher Certification Examinations (FTCE) is a registered trademark of Pearson Education, which is not affiliated with PrepSummit.com.</span>
           <span>Contact us by phone at (877) 266-4919, or by mail at 100 View Street #202, Mountain View, CA 94041.</span>
           <span>&copy; Copyright {new Date().getFullYear()} PrepSummit.com. All other trademarks and copyrights are the property of their respective owners. All rights reserved.</span>
         </div>
