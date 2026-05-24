@@ -1,5 +1,4 @@
-import React from 'react';
-import { Flame, Clock, Trophy, CheckSquare, Award, ArrowRight, Play } from 'lucide-react';
+import { Flame, Trophy, CheckSquare, Award, Play } from 'lucide-react';
 
 export default function DashboardStats({ userStats, courses, onResumeLesson }) {
   const { streak, weeklyGoal, studiedHours, completedLessons, xp, achievements, recentlyViewed } = userStats;

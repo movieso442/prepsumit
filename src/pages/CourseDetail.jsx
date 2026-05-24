@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { BookOpen, Star, HelpCircle, ArrowLeft, Award, Play, ChevronDown, ChevronUp, Check, ThumbsUp, ShieldCheck } from 'lucide-react';
+import { useState } from 'react';
+import { Star, HelpCircle, ArrowLeft, Play, ChevronDown, ChevronUp } from 'lucide-react';
 
 export default function CourseDetail({ course, onBack, onSelectLesson, onStartSignup }) {
   const [activeTab, setActiveTab] = useState('Overview'); // 'Overview', 'Syllabus', 'Test'

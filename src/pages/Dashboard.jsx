@@ -1,5 +1,4 @@
-import React from 'react';
-import { Award, Compass, Heart, Calendar } from 'lucide-react';
+
 import DashboardStats from '../components/DashboardStats';
 
 export default function Dashboard({ userStats, courses, onResumeLesson, setActivePage }) {

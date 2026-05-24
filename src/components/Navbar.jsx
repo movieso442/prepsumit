@@ -1,37 +1,82 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Search, ChevronDown, Menu, X } from 'lucide-react';
 
 export default function Navbar({ 
   activePage, 
   setActivePage, 
-  darkMode, 
-  setDarkMode, 
+  setHomeActiveTab,
   searchQuery, 
   setSearchQuery, 
-  user,
   courses,
   onSelectCourse
 }) {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [localSearch, setLocalSearch] = useState(searchQuery || '');
+  const [prevSearchQuery, setPrevSearchQuery] = useState(searchQuery);
+  const [showSearchInput, setShowSearchInput] = useState(false);
 
-  // Keep local search query in sync when parent query changes
-  useEffect(() => {
+  const dropdownData = {
+    courses: [
+      { id: 'ftce-professional-education-test', text: 'Teacher Certification (FTCE PEd)' },
+      { id: 'ap-calculus', text: 'Advanced Placement Calculus' },
+      { id: 'cell-biology', text: 'College Prep Cell Biology' },
+      { id: 'intro-psychology', text: 'Introduction to Psychology' },
+      { id: 'macroeconomics', text: 'Macroeconomics & Finance' }
+    ],
+    subjects: [
+      { query: 'Math', text: 'Mathematics' },
+      { query: 'Biology', text: 'Biological Sciences' },
+      { query: 'Science', text: 'Physical Science' },
+      { query: 'English', text: 'English & Writing' },
+      { query: 'Finance', text: 'Business & Finance' },
+      { query: 'Psychology', text: 'Psychology' }
+    ],
+    teachers: [
+      { query: 'Teacher', text: 'Teacher Resources & Worksheets' },
+      { query: 'Lesson', text: 'Lesson Plans & Activities' },
+      { query: 'FTCE', text: 'Keys to the Classroom Prep' }
+    ],
+    certifications: [
+      { id: 'ftce-professional-education-test', text: 'FTCE Exams (Teacher Cert)' },
+      { query: 'Praxis', text: 'Praxis Test Preparation' },
+      { query: 'TOEFL', text: 'TOEFL English Certification' },
+      { query: 'CLEP', text: 'CLEP College Credit Exams' }
+    ],
+    degrees: [
+      { query: 'Credit', text: 'Transfer College Credits' },
+      { query: 'Scholars', text: 'Working Scholars® Degrees' },
+      { query: 'College', text: 'Partner College Programs' }
+    ]
+  };
+
+  if (searchQuery !== prevSearchQuery) {
+    setPrevSearchQuery(searchQuery);
     setLocalSearch(searchQuery || '');
-  }, [searchQuery]);
+  }
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
+    const query = localSearch.trim().toLowerCase();
     setSearchQuery(localSearch);
-    setActivePage('catalog');
+    if (query === 'ftce' || query.includes('ftce') || query === 'ped' || query === 'professional education') {
+      if (setHomeActiveTab) setHomeActiveTab('Overview');
+      setActivePage('ftce');
+    } else {
+      setActivePage('catalog');
+    }
   };
 
   const selectCourseById = (courseId) => {
     if (!courses) return;
     const found = courses.find(c => c.id === courseId);
-    if (found && onSelectCourse) {
-      onSelectCourse(found);
+    if (found) {
+      if (courseId === 'ftce-professional-education-test') {
+        if (setHomeActiveTab) setHomeActiveTab('Overview');
+        setActivePage('ftce');
+      } else if (onSelectCourse) {
+        onSelectCourse(found);
+      }
       setActiveDropdown(null);
       setMobileMenuOpen(false);
     }
@@ -40,10 +85,11 @@ export default function Navbar({
   const scrollToTestimonials = () => {
     setActiveDropdown(null);
     setMobileMenuOpen(false);
+    if (setHomeActiveTab) setHomeActiveTab('Overview');
     
-    if (activePage !== 'home') {
-      setActivePage('home');
-      // Wait for home page to render then scroll
+    if (activePage !== 'ftce') {
+      setActivePage('ftce');
+      // Wait for page to render then scroll
       setTimeout(() => {
         const section = document.getElementById('testimonials-section');
         if (section) {
@@ -58,18 +104,6 @@ export default function Navbar({
     }
   };
 
-  const handleNavItemClick = (item) => {
-    if (item.name === 'FTCE Prep Testimonials') {
-      scrollToTestimonials();
-    } else if (item.name === 'FTCE Practice Tests') {
-      setSearchQuery('FTCE');
-      setActivePage('catalog');
-      setMobileMenuOpen(false);
-    } else {
-      setActivePage(item.page);
-      setMobileMenuOpen(false);
-    }
-  };
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
@@ -85,7 +119,7 @@ export default function Navbar({
         fontFamily: "'Outfit', sans-serif",
         fontWeight: '600',
         borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
-      }} className="desktop-only-flex">
+      }} className="hide-on-mobile">
         <span style={{ cursor: 'pointer', opacity: 0.95 }} onMouseOver={e => e.target.style.opacity = 1} onMouseOut={e => e.target.style.opacity = 0.95}>For Teachers</span>
         <span style={{ cursor: 'pointer', opacity: 0.95 }} onMouseOver={e => e.target.style.opacity = 1} onMouseOut={e => e.target.style.opacity = 0.95}>For Working Scholars®</span>
         <span style={{ cursor: 'pointer', opacity: 0.95 }} onMouseOver={e => e.target.style.opacity = 1} onMouseOut={e => e.target.style.opacity = 0.95}>For College Credit</span>
@@ -114,11 +148,11 @@ export default function Navbar({
                 cursor: 'pointer', 
                 padding: '6px', 
                 color: '#1f4e5a',
-                display: 'flex',
+                display: 'none',
                 alignItems: 'center',
                 justifyContent: 'center'
               }}
-              className="hamburger-menu"
+              className="show-on-mobile"
               aria-label="Toggle Menu"
             >
               {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -148,78 +182,9 @@ export default function Navbar({
             {/* Desktop Navigation Links */}
             <nav className="desktop-nav-links" style={{ display: 'flex', alignItems: 'center', gap: '18px', marginLeft: '12px' }}>
               
-              {/* Courses Link with Dropdown */}
-              <div 
-                style={{ position: 'relative' }}
-                onMouseEnter={() => setActiveDropdown('courses')}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <button 
-                  onClick={() => { setActivePage('catalog'); }}
-                  style={{
-                    background: 'none', border: 'none', fontFamily: 'var(--font-heading)',
-                    fontWeight: '700', fontSize: '0.92rem', color: '#222222', cursor: 'pointer',
-                    display: 'flex', alignItems: 'center', gap: '4px', padding: '16px 0', transition: 'color 0.2s'
-                  }}
-                  onMouseOver={(e) => e.target.style.color = '#13809c'}
-                  onMouseOut={(e) => e.target.style.color = '#222222'}
-                >
-                  Courses <ChevronDown size={14} style={{ opacity: 0.7 }} />
-                </button>
-
-                {activeDropdown === 'courses' && (
-                  <div style={{
-                    position: 'absolute', top: '48px', left: 0, width: '250px',
-                    backgroundColor: '#ffffff', padding: '12px', zIndex: 999,
-                    border: '1px solid #d2dbe5', boxShadow: 'var(--shadow-lg)',
-                    borderRadius: '4px', display: 'flex', flexDirection: 'column', gap: '10px'
-                  }} className="card">
-                    <span onClick={() => selectCourseById('ftce-professional-education-test')} style={{ cursor: 'pointer', fontSize: '0.88rem', fontWeight: '600' }} className="footer-link">Teacher Certification (FTCE PEd)</span>
-                    <span onClick={() => selectCourseById('ap-calculus')} style={{ cursor: 'pointer', fontSize: '0.88rem', fontWeight: '600' }} className="footer-link">Advanced Placement Calculus</span>
-                    <span onClick={() => selectCourseById('cell-biology')} style={{ cursor: 'pointer', fontSize: '0.88rem', fontWeight: '600' }} className="footer-link">College Prep Cell Biology</span>
-                    <span onClick={() => selectCourseById('intro-psychology')} style={{ cursor: 'pointer', fontSize: '0.88rem', fontWeight: '600' }} className="footer-link">Introduction to Psychology</span>
-                    <span onClick={() => selectCourseById('macroeconomics')} style={{ cursor: 'pointer', fontSize: '0.88rem', fontWeight: '600' }} className="footer-link">Macroeconomics & Finance</span>
-                  </div>
-                )}
-              </div>
-
-              {/* FTCE Exams Link with Dropdown */}
-              <div 
-                style={{ position: 'relative' }}
-                onMouseEnter={() => setActiveDropdown('ftce')}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <button 
-                  onClick={() => { setSearchQuery('FTCE'); setActivePage('catalog'); }}
-                  style={{
-                    background: 'none', border: 'none', fontFamily: 'var(--font-heading)',
-                    fontWeight: '700', fontSize: '0.92rem', color: '#222222', cursor: 'pointer',
-                    display: 'flex', alignItems: 'center', gap: '4px', padding: '16px 0', transition: 'color 0.2s'
-                  }}
-                  onMouseOver={(e) => e.target.style.color = '#13809c'}
-                  onMouseOut={(e) => e.target.style.color = '#222222'}
-                >
-                  FTCE Exams <ChevronDown size={14} style={{ opacity: 0.7 }} />
-                </button>
-
-                {activeDropdown === 'ftce' && (
-                  <div style={{
-                    position: 'absolute', top: '48px', left: 0, width: '280px',
-                    backgroundColor: '#ffffff', padding: '12px', zIndex: 999,
-                    border: '1px solid #d2dbe5', boxShadow: 'var(--shadow-lg)',
-                    borderRadius: '4px', display: 'flex', flexDirection: 'column', gap: '10px'
-                  }} className="card">
-                    <span onClick={() => selectCourseById('ftce-professional-education-test')} style={{ cursor: 'pointer', fontSize: '0.88rem', fontWeight: '700', color: '#13809c' }} className="footer-link">FTCE Professional Education (PEd)</span>
-                    <span onClick={() => { setSearchQuery('FTCE GK'); setActivePage('catalog'); setActiveDropdown(null); }} style={{ cursor: 'pointer', fontSize: '0.88rem' }} className="footer-link">FTCE General Knowledge (GK)</span>
-                    <span onClick={() => { setSearchQuery('FTCE Elementary'); setActivePage('catalog'); setActiveDropdown(null); }} style={{ cursor: 'pointer', fontSize: '0.88rem' }} className="footer-link">FTCE Elementary Education</span>
-                    <span onClick={() => { setSearchQuery('FTCE Subject'); setActivePage('catalog'); setActiveDropdown(null); }} style={{ cursor: 'pointer', fontSize: '0.88rem' }} className="footer-link">FTCE Subject Area Exams (SAEs)</span>
-                  </div>
-                )}
-              </div>
-
-              {/* FTCE Practice Tests */}
+              {/* Plans Link */}
               <button 
-                onClick={() => { setSearchQuery('FTCE'); setActivePage('catalog'); }}
+                onClick={() => { setActivePage('signup'); }}
                 style={{
                   background: 'none', border: 'none', fontFamily: 'var(--font-heading)',
                   fontWeight: '700', fontSize: '0.92rem', color: '#222222', cursor: 'pointer',
@@ -228,22 +193,71 @@ export default function Navbar({
                 onMouseOver={(e) => e.target.style.color = '#13809c'}
                 onMouseOut={(e) => e.target.style.color = '#222222'}
               >
-                FTCE Practice Tests
+                Plans
               </button>
 
-              {/* FTCE Prep Testimonials */}
-              <button 
-                onClick={scrollToTestimonials}
-                style={{
-                  background: 'none', border: 'none', fontFamily: 'var(--font-heading)',
-                  fontWeight: '700', fontSize: '0.92rem', color: '#222222', cursor: 'pointer',
-                  padding: '16px 0', transition: 'color 0.2s'
-                }}
-                onMouseOver={(e) => e.target.style.color = '#13809c'}
-                onMouseOut={(e) => e.target.style.color = '#222222'}
-              >
-                FTCE Prep Testimonials
-              </button>
+              {/* Dynamic Dropdowns based on Study.com categories */}
+              {['courses', 'subjects', 'teachers', 'certifications', 'degrees'].map((key) => {
+                let label = key.charAt(0).toUpperCase() + key.slice(1);
+                if (key === 'degrees') label = 'College Degrees';
+                return (
+                  <div 
+                    key={key}
+                    style={{ position: 'relative' }}
+                    onMouseEnter={() => setActiveDropdown(key)}
+                    onMouseLeave={() => setActiveDropdown(null)}
+                  >
+                    <button 
+                      onClick={() => { setActivePage('catalog'); }}
+                      style={{
+                        background: 'none', border: 'none', fontFamily: 'var(--font-heading)',
+                        fontWeight: '700', fontSize: '0.92rem', color: '#222222', cursor: 'pointer',
+                        display: 'flex', alignItems: 'center', gap: '4px', padding: '16px 0', transition: 'color 0.2s'
+                      }}
+                      onMouseOver={(e) => e.target.style.color = '#13809c'}
+                      onMouseOut={(e) => e.target.style.color = '#222222'}
+                    >
+                      {label} <ChevronDown size={14} style={{ opacity: 0.7 }} />
+                    </button>
+
+                    {activeDropdown === key && (
+                      <div style={{
+                        position: 'absolute', top: '100%', left: 0, width: '280px',
+                        backgroundColor: '#ffffff', padding: '8px', zIndex: 999,
+                        border: '1px solid #d2dbe5', boxShadow: 'var(--shadow-lg)',
+                        borderRadius: '6px', display: 'flex', flexDirection: 'column', gap: '4px'
+                      }} className="card">
+                        {dropdownData[key].map((item, idx) => (
+                          <span 
+                            key={idx}
+                            onClick={() => {
+                              if (item.id) {
+                                selectCourseById(item.id);
+                              } else {
+                                setSearchQuery(item.query);
+                                if (item.query === 'FTCE') {
+                                  setActivePage('ftce');
+                                } else {
+                                  setActivePage('catalog');
+                                }
+                              }
+                              setActiveDropdown(null);
+                            }} 
+                            style={{ 
+                              cursor: 'pointer', fontSize: '0.86rem', fontWeight: '600', color: '#222222',
+                              padding: '8px 12px', borderRadius: '4px', display: 'block', transition: 'all 0.2s'
+                            }} 
+                            onMouseOver={e => { e.target.style.backgroundColor = 'var(--primary-light)'; e.target.style.color = 'var(--primary)'; }}
+                            onMouseOut={e => { e.target.style.backgroundColor = 'transparent'; e.target.style.color = '#222222'; }}
+                          >
+                            {item.text}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
 
             </nav>
           </div>
@@ -300,53 +314,77 @@ export default function Navbar({
               Sign Up
             </button>
 
-            {/* Inline Round Search Input - Screenshot 555 style */}
-            <form onSubmit={handleSearchSubmit} style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              position: 'relative',
-              width: '210px'
-            }} className="desktop-only">
-              <input 
-                type="text" 
-                placeholder="Search Courses & Lessons" 
-                value={localSearch}
-                onChange={(e) => setLocalSearch(e.target.value)}
-                style={{
-                  width: '100%',
-                  padding: '8px 36px 8px 16px',
-                  borderRadius: '20px',
-                  border: '1px solid #d2dbe5',
-                  fontSize: '0.82rem',
-                  outline: 'none',
-                  backgroundColor: '#ffffff',
-                  color: '#222222',
-                  transition: 'border-color 0.2s'
-                }}
-                onFocus={(e) => e.target.style.borderColor = '#13809c'}
-                onBlur={(e) => e.target.style.borderColor = '#d2dbe5'}
-              />
+            {/* Toggleable Search Button / Input - Screenshot 555 style */}
+            {!showSearchInput ? (
               <button 
-                type="submit" 
-                style={{ 
-                  background: 'none', 
-                  border: 'none', 
-                  position: 'absolute', 
-                  right: '12px', 
-                  top: '50%', 
-                  transform: 'translateY(-50%)', 
-                  cursor: 'pointer', 
-                  color: '#222222', 
-                  display: 'flex', 
-                  alignItems: 'center', 
+                onClick={() => setShowSearchInput(true)}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  color: '#13809c',
+                  display: 'flex',
+                  alignItems: 'center',
                   justifyContent: 'center',
-                  padding: 0
+                  padding: '8px'
                 }}
-                aria-label="Search Submit"
+                className="hide-on-mobile"
+                aria-label="Open Search"
               >
-                <Search size={14} />
+                <Search size={20} />
               </button>
-            </form>
+            ) : (
+              <form onSubmit={handleSearchSubmit} style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                position: 'relative',
+                width: '210px'
+              }} className="hide-on-mobile">
+                <input 
+                  type="text" 
+                  placeholder="Search Courses & Lessons" 
+                  value={localSearch}
+                  onChange={(e) => setLocalSearch(e.target.value)}
+                  autoFocus
+                  style={{
+                    width: '100%',
+                    padding: '8px 36px 8px 16px',
+                    borderRadius: '20px',
+                    border: '1.5px solid #13809c',
+                    fontSize: '0.82rem',
+                    outline: 'none',
+                    backgroundColor: '#ffffff',
+                    color: '#222222',
+                    transition: 'border-color 0.2s'
+                  }}
+                  onBlur={() => {
+                    if (!localSearch.trim()) {
+                      setShowSearchInput(false);
+                    }
+                  }}
+                />
+                <button 
+                  type="submit" 
+                  style={{ 
+                    background: 'none', 
+                    border: 'none', 
+                    position: 'absolute', 
+                    right: '12px', 
+                    top: '50%', 
+                    transform: 'translateY(-50%)', 
+                    cursor: 'pointer', 
+                    color: '#222222', 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center',
+                    padding: 0
+                  }}
+                  aria-label="Search Submit"
+                >
+                  <Search size={14} />
+                </button>
+              </form>
+            )}
 
           </div>
 
@@ -393,8 +431,8 @@ export default function Navbar({
             {/* Mobile Nav Links */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginTop: '4px' }}>
               <span onClick={() => { setActivePage('catalog'); setMobileMenuOpen(false); }} style={{ fontSize: '0.95rem', fontWeight: '700', color: '#222222', cursor: 'pointer' }}>All Courses</span>
-              <span onClick={() => { setSearchQuery('FTCE'); setActivePage('catalog'); setMobileMenuOpen(false); }} style={{ fontSize: '0.95rem', fontWeight: '700', color: '#222222', cursor: 'pointer' }}>FTCE Exams</span>
-              <span onClick={() => { setSearchQuery('FTCE'); setActivePage('catalog'); setMobileMenuOpen(false); }} style={{ fontSize: '0.95rem', fontWeight: '700', color: '#222222', cursor: 'pointer' }}>FTCE Practice Tests</span>
+              <span onClick={() => { setSearchQuery('FTCE'); setActivePage('ftce'); setMobileMenuOpen(false); }} style={{ fontSize: '0.95rem', fontWeight: '700', color: '#222222', cursor: 'pointer' }}>FTCE Exams</span>
+              <span onClick={() => { if (setHomeActiveTab) setHomeActiveTab('Test'); setActivePage('ftce'); setMobileMenuOpen(false); }} style={{ fontSize: '0.95rem', fontWeight: '700', color: '#222222', cursor: 'pointer' }}>FTCE Practice Tests</span>
               <span onClick={scrollToTestimonials} style={{ fontSize: '0.95rem', fontWeight: '700', color: '#222222', cursor: 'pointer' }}>Testimonials</span>
             </div>
 

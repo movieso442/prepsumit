@@ -848,3 +848,212 @@ button, input, select {
   }
 }
 
+/* Premium Responsive Grids for Course Guide & Exam Views */
+.course-hero-grid {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+@media (max-width: 950px) {
+  .course-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.study-guide-main-grid {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 32px;
+  align-items: start;
+  width: 100%;
+}
+@media (max-width: 950px) {
+  .study-guide-main-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.syllabus-scroll-container {
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+.syllabus-scroll-container::-webkit-scrollbar {
+  width: 8px;
+}
+.syllabus-scroll-container::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+.syllabus-scroll-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+.syllabus-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1.8fr;
+  gap: 32px;
+  align-items: start;
+}
+@media (max-width: 950px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.exam-hero-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+@media (max-width: 950px) {
+  .exam-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    text-align: center;
+  }
+}
+
+.featured-logos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+}
+
+.how-we-succeed-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .how-we-succeed-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.main-content-full-width {
+  flex: 1 0 auto;
+  width: 100%;
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+/* Responsive Grid Utilities for Homepage */
+.responsive-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+.responsive-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.responsive-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.responsive-grid-5 {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+  gap: 32px;
+}
+
+@media (max-width: 1024px) {
+  .responsive-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .responsive-grid-5 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .responsive-grid-2,
+  .responsive-grid-3,
+  .responsive-grid-4 {
+    grid-template-columns: 1fr !important;
+  }
+  .responsive-grid-5 {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .flex-col-mobile {
+    flex-direction: column !important;
+  }
+  .flex-col-reverse-mobile {
+    flex-direction: column-reverse !important;
+  }
+  .hide-on-mobile {
+    display: none !important;
+  }
+  .show-on-mobile {
+    display: flex !important;
+  }
+  .hero-responsive-text {
+    font-size: 2.2rem !important;
+  }
+  .hero-responsive-subtext {
+    font-size: 1.2rem !important;
+  }
+  .align-center-mobile {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .full-width-mobile {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .stack-image-mobile {
+    width: 100% !important;
+    height: 250px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .responsive-grid-5 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Mobile Menu Classes */
+.mobile-drawer {
+  position: fixed;
+  top: 68px; /* Below header */
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 68px);
+  background-color: var(--bg-secondary);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  gap: 24px;
+  overflow-y: auto;
+}
+
+.mobile-drawer-link {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 16px;
+  cursor: pointer;
+}

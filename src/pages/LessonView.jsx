@@ -1,5 +1,4 @@
-import React from 'react';
-import { ArrowLeft, Play, Clock, BookOpen, HelpCircle } from 'lucide-react';
+import { ArrowLeft, Clock, BookOpen, HelpCircle } from 'lucide-react';
 import VideoPlayer from '../components/VideoPlayer';
 
 export default function LessonView({ course, lesson, onBackToCourse, onSelectLesson, onQuizComplete }) {

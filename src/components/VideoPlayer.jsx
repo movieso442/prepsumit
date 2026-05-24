@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { Play, Pause, Volume2, Maximize, FileText, List, HelpCircle, BookOpen, AlertCircle } from 'lucide-react';
 import QuizEngine from './QuizEngine';
 
@@ -7,8 +7,6 @@ export default function VideoPlayer({ lesson, courseColor, onQuizComplete }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [currentLineIndex, setCurrentLineIndex] = useState(0);
-  
   const videoRef = useRef(null);
 
   // Helper to parse "MM:SS" into seconds
@@ -20,22 +18,18 @@ export default function VideoPlayer({ lesson, courseColor, onQuizComplete }) {
     return 0;
   };
 
-  // Sync transcript line based on video current time
-  useEffect(() => {
-    if (!lesson.transcript) return;
-    
-    // Find the current line
-    let activeLine = 0;
+  // Sync transcript line based on video current time (calculated during render)
+  let currentLineIndex = 0;
+  if (lesson.transcript) {
     for (let i = 0; i < lesson.transcript.length; i++) {
       const lineTime = parseTimeToSeconds(lesson.transcript[i].time);
       if (currentTime >= lineTime) {
-        activeLine = i;
+        currentLineIndex = i;
       } else {
         break;
       }
     }
-    setCurrentLineIndex(activeLine);
-  }, [currentTime, lesson.transcript]);
+  }
 
   // Video Events
   const handlePlayPause = () => {

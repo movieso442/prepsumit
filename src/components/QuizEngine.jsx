@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Check, X, ArrowRight, RotateCcw, Award, CheckCircle2, HelpCircle } from 'lucide-react';
 
 export default function QuizEngine({ questions, quizTitle, courseColor, onQuizComplete }) {

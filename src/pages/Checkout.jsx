@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Lock, ShieldCheck, CheckCircle2, CreditCard } from 'lucide-react';
+import { useState } from 'react';
+import { Lock, ShieldCheck, CreditCard } from 'lucide-react';
 
 export default function Checkout({ signupData, onCheckoutComplete }) {
   const [selectedPlan, setSelectedPlan] = useState('monthly'); // 'monthly' ($59.99) vs 'twoweek' ($39.99)

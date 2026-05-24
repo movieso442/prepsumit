@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Search, Star, BookOpen, Filter } from 'lucide-react';
 
 export default function CourseCatalog({ courses, searchQuery, setSearchQuery, onSelectCourse }) {

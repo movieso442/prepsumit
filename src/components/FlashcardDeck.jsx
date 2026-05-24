@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ChevronLeft, ChevronRight, RotateCcw, Check, Bookmark, RefreshCw, Award } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 export default function FlashcardDeck({ deck, deckTitle, courseColor }) {
   const [currentIndex, setCurrentIndex] = useState(0);

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Check, Mail, Phone, Lock, ChevronRight } from 'lucide-react';
+import { useState } from 'react';
+import { Check } from 'lucide-react';
 
 export default function Login({ setActivePage }) {
   const [username, setUsername] = useState('');

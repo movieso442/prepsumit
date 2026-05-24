@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
+import FtceCourse from './pages/FtceCourse';
 import CourseCatalog from './pages/CourseCatalog';
 import CourseDetail from './pages/CourseDetail';
 import LessonView from './pages/LessonView';
@@ -14,7 +15,23 @@ import { coursesData, userStatsData } from './data/courses';
 import { Award, Sparkles } from 'lucide-react';
 
 export default function App() {
-  const [activePage, setActivePage] = useState('home'); // 'home', 'catalog', 'detail', 'lesson', 'dashboard', 'signup', 'checkout'
+  const [activePage, setActivePage] = useState(() => {
+    const path = window.location.pathname.toLowerCase();
+    const hash = window.location.hash.toLowerCase();
+    const searchParams = new URLSearchParams(window.location.search);
+    const q = searchParams.get('q')?.toLowerCase();
+
+    if (
+      path.includes('ftce') || 
+      path.includes('ftce-courses') || 
+      hash.includes('ftce') || 
+      q === 'ftce'
+    ) {
+      return 'ftce';
+    }
+    return 'home';
+  }); // 'home', 'catalog', 'detail', 'lesson', 'dashboard', 'signup', 'checkout'
+  const [homeActiveTab, setHomeActiveTab] = useState('Overview'); // 'Overview', 'Syllabus', 'Test'
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [selectedLesson, setSelectedLesson] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -124,6 +141,8 @@ export default function App() {
       <Navbar 
         activePage={activePage}
         setActivePage={setActivePage}
+        homeActiveTab={homeActiveTab}
+        setHomeActiveTab={setHomeActiveTab}
         darkMode={darkMode}
         setDarkMode={setDarkMode}
         searchQuery={searchQuery}
@@ -134,13 +153,28 @@ export default function App() {
       />
 
       {/* Main Core View Area */}
-      <main className="main-content" style={{ minHeight: 'calc(100vh - 400px)' }}>
+      <main className={activePage === 'home' ? "main-content-full-width" : "main-content"} style={{ minHeight: 'calc(100vh - 400px)' }}>
         {activePage === 'home' && (
           <Home 
             courses={coursesData}
+            activeTab={homeActiveTab}
+            setActiveTab={setHomeActiveTab}
             setActivePage={setActivePage}
             setSearchQuery={setSearchQuery}
             onSelectCourse={handleSelectCourse}
+            onSelectLesson={handleSelectLesson}
+          />
+        )}
+
+        {activePage === 'ftce' && (
+          <FtceCourse 
+            courses={coursesData}
+            activeTab={homeActiveTab}
+            setActiveTab={setHomeActiveTab}
+            setActivePage={setActivePage}
+            setSearchQuery={setSearchQuery}
+            onSelectCourse={handleSelectCourse}
+            onSelectLesson={handleSelectLesson}
           />
         )}
 
