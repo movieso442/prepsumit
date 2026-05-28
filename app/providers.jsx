@@ -7,7 +7,8 @@ import Footer from '@/src/components/Footer';
 import AITutor from '@/src/components/AITutor';
 import EmailPopup from '@/src/components/EmailPopup';
 import { coursesData, userStatsData } from '@/src/data/courses';
-import { Award, Sparkles, X, Info } from 'lucide-react';
+import { X, Info } from 'lucide-react';
+import Image from 'next/image';
 
 const AppContext = createContext(null);
 
@@ -128,8 +129,20 @@ function AppProvidersContent({ children }) {
       setActivePageState('checkout');
     } else if (path === '/dashboard') {
       setActivePageState('dashboard');
-    } else if (path === '/plans' || path.includes('/academy/plans.html')) {
-      setActivePageState('plans');
+    } else if (path === '/plans' || path.includes('/academy/plans.html') || path === '/pricing' || path === '/plans-pricing') {
+      setActivePageState('pricing');
+    } else if (path === '/praxis') {
+      setActivePageState('praxis');
+      const praxisCourse = coursesData.find(c => c.id === 'praxis-core');
+      if (praxisCourse) setSelectedCourseState(praxisCourse);
+    } else if (path === '/about') {
+      setActivePageState('about');
+    } else if (path === '/contact') {
+      setActivePageState('contact');
+    } else if (path === '/privacy-policy') {
+      setActivePageState('privacy');
+    } else if (path === '/terms-of-use') {
+      setActivePageState('terms');
     } else if (path === '/search') {
       setActivePageState('search');
       setSearchQueryState(q);
@@ -178,7 +191,13 @@ function AppProvidersContent({ children }) {
       case 'signup': router.push('/signup'); break;
       case 'checkout': router.push('/checkout'); break;
       case 'dashboard': router.push('/dashboard'); break;
-      case 'plans': router.push('/academy/plans.html'); break;
+      case 'plans': router.push('/pricing'); break;
+      case 'pricing': router.push('/pricing'); break;
+      case 'praxis': router.push('/praxis'); break;
+      case 'about': router.push('/about'); break;
+      case 'contact': router.push('/contact'); break;
+      case 'privacy': router.push('/privacy-policy'); break;
+      case 'terms': router.push('/terms-of-use'); break;
       case 'search': router.push(`/search?q=${encodeURIComponent(searchQuery)}`); break;
       default: break;
     }
@@ -349,11 +368,13 @@ function AppProvidersContent({ children }) {
               style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
               onClick={() => { router.push('/'); }}
             >
-              <svg width="26" height="26" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 15 L85 50 L15 85 Z" fill="#ffffff" />
-                <path d="M15 15 L50 50 L15 85 Z" fill="#ffffff" opacity="0.3" />
-                <path d="M50 50 L85 50 L15 85 Z" fill="#ffb627" />
-              </svg>
+              <Image 
+                src="/images/prepsumit-logo.png" 
+                alt="PrepSumit logo" 
+                width={26} 
+                height={26} 
+                style={{ objectFit: 'contain' }}
+              />
               <span style={{ 
                 fontFamily: "'Outfit', sans-serif",
                 fontSize: '1.4rem', 

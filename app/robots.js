@@ -3,7 +3,7 @@ export default function robots() {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/dashboard', '/checkout'],
+      disallow: ['/dashboard', '/checkout', '/api/'],
     },
     sitemap: 'https://prepsumit.com/sitemap.xml',
   };

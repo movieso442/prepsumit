@@ -1,6 +1,6 @@
 "use client";
 
-import TeasLanding from '@/src/pages/TeasLanding';
+import TeasLanding from '@/src/views/TeasLanding';
 import { useAppContext } from '../providers';
 
 export default function TeasLandingPage() {

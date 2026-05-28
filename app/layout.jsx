@@ -2,19 +2,29 @@ import '../src/index.css';
 import AppProviders from './providers';
 
 export const metadata = {
-  title: "PrepSumit | Online Courses for College Credit, Exam Prep & Test Preparation",
+  metadataBase: new URL("https://prepsumit.com"),
+  title: {
+    default: "PrepSumit | Online Courses for College Credit, Exam Prep & Test Preparation",
+    template: "%s | PrepSumit"
+  },
   description: "PrepSumit is a leading online learning platform offering visual micro-lessons, practice quizzes, and custom study guides for exam prep, college credit, and teacher certification. Access 88,000+ courses and study on your schedule, risk-free.",
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
   openGraph: {
     type: "website",
     url: "https://prepsumit.com/",
     title: "PrepSumit | Online Courses for College Credit, Exam Prep & Test Preparation",
     description: "PrepSumit is a leading online learning platform offering visual micro-lessons, practice quizzes, and custom study guides for exam prep, college credit, and teacher certification.",
+    siteName: "PrepSumit",
     images: [
       {
-        url: "https://prepsumit.com/og-image.png",
+        url: "https://prepsumit.com/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "PrepSumit Logo"
+        alt: "PrepSumit logo"
       }
     ],
   },
@@ -23,11 +33,15 @@ export const metadata = {
     url: "https://prepsumit.com/",
     title: "PrepSumit | Online Courses for College Credit, Exam Prep & Test Preparation",
     description: "PrepSumit is a leading online learning platform offering visual micro-lessons, practice quizzes, and custom study guides for exam prep, college credit, and teacher certification.",
-    images: ["https://prepsumit.com/og-image.png"],
+    images: ["https://prepsumit.com/images/og-image.png"],
   },
   alternates: {
     canonical: "https://prepsumit.com/",
   },
+  robots: {
+    index: true,
+    follow: true,
+  }
 };
 
 export const viewport = {
@@ -37,7 +51,7 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en-US">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -51,7 +65,7 @@ export default function RootLayout({ children }) {
               "@type": "Organization",
               "name": "PrepSumit",
               "url": "https://prepsumit.com",
-              "logo": "https://prepsumit.com/logo.png",
+              "logo": "https://prepsumit.com/images/prepsumit-logo.png",
               "foundingDate": "2026",
               "description": "Online learning platform provides video lessons, practice questions, and custom study guides for exam preparation and mastering concepts. It offers college courses, K-12 educator resources, and professional development. AI tools personalize learning paths and assist with lesson planning.",
               "sameAs": [

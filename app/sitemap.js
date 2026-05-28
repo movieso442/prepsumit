@@ -7,18 +7,23 @@ export default async function sitemap() {
   const staticPaths = [
     '',
     '/ftce',
-    '/teas',
+    '/praxis',
+    '/pricing',
     '/catalog',
     '/signup',
     '/login',
-    '/academy/plans.html',
+    '/about',
+    '/contact',
+    '/privacy-policy',
+    '/terms-of-use',
+    '/teas',
   ];
 
   const staticUrls = staticPaths.map((path) => ({
     url: `${baseUrl}${path}`,
     lastModified: new Date().toISOString().split('T')[0],
     changeFrequency: path === '' ? 'daily' : 'weekly',
-    priority: path === '' ? 1.0 : (path === '/ftce' || path === '/teas' ? 0.98 : 0.8),
+    priority: path === '' ? 1.0 : (path === '/ftce' || path === '/praxis' ? 0.98 : (path === '/pricing' ? 0.9 : (path === '/privacy-policy' || path === '/terms-of-use' ? 0.5 : 0.7))),
   }));
 
   // Dynamic course routes

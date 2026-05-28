@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams } from 'next/navigation';
-import LessonView from '@/src/pages/LessonView';
+import LessonView from '@/src/views/LessonView';
 import { useAppContext } from '../../../../providers';
 
 export default function LessonViewPage() {

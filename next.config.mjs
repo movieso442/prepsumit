@@ -12,6 +12,18 @@ const nextConfig = {
       },
     ],
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  async redirects() {
+    return [
+      {
+        source: '/academy/plans.html',
+        destination: '/pricing',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Footer({ setActivePage, onSelectCategoryLanding, onOpenInfo }) {
   return (
     <footer className="footer" style={{ 
@@ -78,32 +80,29 @@ export default function Footer({ setActivePage, onSelectCategoryLanding, onOpenI
       <div className="footer-grid">
         
         {/* Left columns */}
-        <div className="footer-cols-left">
+        <nav aria-label="Footer navigation" className="footer-cols-left">
           
           {/* Plans Column */}
           <div className="footer-col">
-            <h4>Plans</h4>
-            <a href="/academy/plans.html" onClick={(e) => { e.preventDefault(); setActivePage('plans'); }}>Student Solutions</a>
-            <a href="/category/teacher-resources" onClick={(e) => { e.preventDefault(); onSelectCategoryLanding('teacher-resources'); }}>Teacher Solutions</a>
-            <a href="/category/college-credit" onClick={(e) => { e.preventDefault(); onSelectCategoryLanding('college-credit'); }}>Working Scholars® Solutions</a>
+            <h4>Plans & Pricing</h4>
+            <Link href="/pricing" onClick={() => setActivePage('plans')}>Student Solutions</Link>
+            <Link href="/ftce" onClick={() => setActivePage('ftce')}>FTCE Exams Prep</Link>
+            <Link href="/praxis" onClick={() => setActivePage('praxis')}>Praxis Core Prep</Link>
           </div>
 
           {/* About Us Column */}
           <div className="footer-col">
             <h4>About Us</h4>
-            <a href="#" onClick={(e) => { e.preventDefault(); onOpenInfo('faq'); }}>Blog</a>
+            <Link href="/about" onClick={() => setActivePage('about')}>Our Mission</Link>
             <a href="#" onClick={(e) => { e.preventDefault(); onOpenInfo('careers'); }}>Careers</a>
             <a href="#" onClick={(e) => { e.preventDefault(); onOpenInfo('teach'); }}>Teach For Us</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); onOpenInfo('about'); }}>Press Center</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); onOpenInfo('about'); }}>Ambassador</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); onOpenInfo('about'); }}>Scholarships</a>
           </div>
 
           {/* Support Column */}
           <div className="footer-col">
             <h4>Support</h4>
-            <a href="#" onClick={(e) => { e.preventDefault(); onOpenInfo('faq'); }}>FAQ</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); onOpenInfo('faq'); }}>Site Feedback</a>
+            <Link href="/contact" onClick={() => setActivePage('contact')}>Contact Support</Link>
+            <a href="#" onClick={(e) => { e.preventDefault(); onOpenInfo('faq'); }}>FAQ Help</a>
           </div>
 
           {/* Download the app Column */}
@@ -156,7 +155,7 @@ export default function Footer({ setActivePage, onSelectCategoryLanding, onOpenI
             </div>
           </div>
 
-        </div>
+        </nav>
 
         {/* Right Working Scholars section */}
         <div className="footer-col-right">
@@ -228,9 +227,9 @@ export default function Footer({ setActivePage, onSelectCategoryLanding, onOpenI
             © Copyright 2026 PrepSumit.com. All other trademarks and copyrights are the property of their respective owners. All rights reserved.
           </span>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginTop: '4px' }}>
-            <a href="#" onClick={(e) => { e.preventDefault(); onOpenInfo('terms'); }} style={{ color: '#94a3b8', textDecoration: 'underline' }}>Terms of Use</a>
+            <Link href="/terms-of-use" style={{ color: '#94a3b8', textDecoration: 'underline' }}>Terms of Use</Link>
             <span>|</span>
-            <a href="#" onClick={(e) => { e.preventDefault(); onOpenInfo('privacy'); }} style={{ color: '#94a3b8', textDecoration: 'underline' }}>Privacy Policy</a>
+            <Link href="/privacy-policy" style={{ color: '#94a3b8', textDecoration: 'underline' }}>Privacy Policy</Link>
             <span>|</span>
             <a href="#" onClick={(e) => { e.preventDefault(); onOpenInfo('terms'); }} style={{ color: '#94a3b8', textDecoration: 'underline' }}>DMCA Notice</a>
             <span>|</span>

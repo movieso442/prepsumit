@@ -1,6 +1,6 @@
 "use client";
 
-import Checkout from '@/src/pages/Checkout';
+import Checkout from '@/src/views/Checkout';
 import { useAppContext } from '../providers';
 
 export default function CheckoutPage() {

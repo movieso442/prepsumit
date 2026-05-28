@@ -1,6 +1,6 @@
 "use client";
 
-import Dashboard from '@/src/pages/Dashboard';
+import Dashboard from '@/src/views/Dashboard';
 import { useAppContext } from '../providers';
 
 export default function DashboardPage() {

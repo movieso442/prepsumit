@@ -1,9 +1,9 @@
 "use client";
 
 import { useParams } from 'next/navigation';
-import CourseDetail from '@/src/pages/CourseDetail';
-import FtceCourse from '@/src/pages/FtceCourse';
-import TeasLanding from '@/src/pages/TeasLanding';
+import CourseDetail from '@/src/views/CourseDetail';
+import FtceCourse from '@/src/views/FtceCourse';
+import TeasLanding from '@/src/views/TeasLanding';
 import { useAppContext } from '../../providers';
 
 export default function CourseDetailPage() {

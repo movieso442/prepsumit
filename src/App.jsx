@@ -36,7 +36,7 @@ export default function App() {
     if (path.includes('/catalog')) {
       return 'catalog';
     }
-    if (path.includes('/plans') || path.includes('/academy/plans.html')) {
+    if (path.includes('/plans') || path.includes('/academy/plans.html') || path.includes('/pricing')) {
       return 'plans';
     }
     if (path.includes('/login')) {
@@ -233,7 +233,7 @@ export default function App() {
         newPath = '/catalog';
         break;
       case 'plans':
-        newPath = '/academy/plans.html';
+        newPath = '/pricing';
         break;
       case 'search':
         newPath = '/search';
@@ -298,7 +298,7 @@ export default function App() {
         if (teasCourse) setSelectedCourse(teasCourse);
       } else if (path.includes('/catalog')) {
         setActivePage('catalog');
-      } else if (path.includes('/plans') || path.includes('/academy/plans.html')) {
+      } else if (path.includes('/plans') || path.includes('/academy/plans.html') || path.includes('/pricing')) {
         setActivePage('plans');
       } else if (path.includes('/login')) {
         setActivePage('login');
@@ -528,7 +528,7 @@ export default function App() {
       case 'ftce': pathUrl = "/ftce"; break;
       case 'teas': pathUrl = "/teas"; break;
       case 'catalog': pathUrl = "/catalog"; break;
-      case 'plans': pathUrl = "/academy/plans.html"; break;
+      case 'plans': pathUrl = "/pricing"; break;
       case 'login': pathUrl = "/login"; break;
       case 'signup': pathUrl = "/signup"; break;
       case 'checkout': pathUrl = "/checkout"; break;

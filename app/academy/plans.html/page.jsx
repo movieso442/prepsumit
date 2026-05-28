@@ -1,10 +1,12 @@
 "use client";
 
-import Plans from '@/src/pages/Plans';
+import Plans from '@/src/views/Plans';
 import { useAppContext } from '../../providers';
 
 export default function PlansPage() {
   const { 
+    signupData,
+    setSignupData,
     setShowEmailPopup, 
     setSignupDetails, 
     setActivePage 
@@ -14,8 +16,18 @@ export default function PlansPage() {
     <Plans 
       onStartSignup={(details) => {
         if (details) {
-          setSignupDetails(details);
-          setActivePage('signup');
+          if (signupData) {
+            setSignupData(prev => ({
+              ...prev,
+              planName: details.planName,
+              price: details.price,
+              selectedTest: details.selectedTest || prev.selectedTest
+            }));
+            setActivePage('checkout');
+          } else {
+            setSignupDetails(details);
+            setActivePage('signup');
+          }
         } else {
           setShowEmailPopup(true);
         }

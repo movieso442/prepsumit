@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams } from 'next/navigation';
-import CategoryLanding from '@/src/pages/CategoryLanding';
+import CategoryLanding from '@/src/views/CategoryLanding';
 import { useAppContext } from '../../providers';
 
 export default function CategoryPage() {

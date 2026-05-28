@@ -1,6 +1,6 @@
 "use client";
 
-import CourseCatalog from '@/src/pages/CourseCatalog';
+import CourseCatalog from '@/src/views/CourseCatalog';
 import { useAppContext } from '../providers';
 
 export default function CatalogPage() {

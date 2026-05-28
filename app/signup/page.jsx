@@ -1,6 +1,6 @@
 "use client";
 
-import Signup from '@/src/pages/Signup';
+import Signup from '@/src/views/Signup';
 import { useAppContext } from '../providers';
 
 export default function SignupPage() {

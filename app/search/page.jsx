@@ -1,6 +1,6 @@
 "use client";
 
-import SearchResults from '@/src/pages/SearchResults';
+import SearchResults from '@/src/views/SearchResults';
 import { useAppContext } from '../providers';
 
 export default function SearchPage() {

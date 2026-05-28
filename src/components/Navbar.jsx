@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Search, ChevronDown, ChevronRight, Menu, X } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Navbar({ 
   activePage, 
@@ -414,6 +415,9 @@ export default function Navbar({
     if (query === 'ftce' || query.includes('ftce') || query === 'ped' || query === 'professional education') {
       if (setHomeActiveTab) setHomeActiveTab('Overview');
       setActivePage('ftce');
+    } else if (query === 'praxis' || query.includes('praxis')) {
+      if (setHomeActiveTab) setHomeActiveTab('Overview');
+      setActivePage('praxis');
     } else {
       setActivePage('search');
     }
@@ -426,6 +430,9 @@ export default function Navbar({
       if (courseId === 'ftce-professional-education-test') {
         if (setHomeActiveTab) setHomeActiveTab('Overview');
         setActivePage('ftce');
+      } else if (courseId === 'praxis-core') {
+        if (setHomeActiveTab) setHomeActiveTab('Overview');
+        setActivePage('praxis');
       } else if (onSelectCourse) {
         onSelectCourse(found);
       }
@@ -516,11 +523,13 @@ export default function Navbar({
               style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', textDecoration: 'none' }}
               onClick={(e) => { e.preventDefault(); setActivePage('home'); setSearchQuery(''); }}
             >
-              <svg width="34" height="34" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 15 L85 50 L15 85 Z" fill="#13809c" />
-                <path d="M15 15 L50 50 L15 85 Z" fill="#1f4e5a" opacity="0.3" />
-                <path d="M50 50 L85 50 L15 85 Z" fill="#ffb627" />
-              </svg>
+              <Image 
+                src="/images/prepsumit-logo.png" 
+                alt="PrepSumit logo" 
+                width={34} 
+                height={34} 
+                style={{ objectFit: 'contain' }}
+              />
               <span style={{ 
                 fontFamily: "'Outfit', sans-serif",
                 fontSize: '1.65rem', 
@@ -537,7 +546,7 @@ export default function Navbar({
               
               {/* Plans Link */}
               <a 
-                href="/academy/plans.html"
+                href="/pricing"
                 onClick={(e) => { e.preventDefault(); setActivePage('plans'); }}
                 style={{
                   background: 'none', border: 'none', fontFamily: 'var(--font-heading)',
@@ -640,11 +649,13 @@ export default function Navbar({
                                 if (subItem.landing) return `/category/${subItem.landing}`;
                                 if (subItem.id) {
                                   if (subItem.id === 'ftce-professional-education-test') return '/ftce';
+                                  if (subItem.id === 'praxis-core') return '/praxis';
                                   if (subItem.id === 'teas-prep') return '/teas';
                                   return `/courses/${subItem.id}`;
                                 }
                                 if (subItem.query) {
                                   if (subItem.query === 'FTCE') return '/ftce';
+                                  if (subItem.query === 'Praxis') return '/praxis';
                                   if (subItem.query === 'TEAS') return '/teas';
                                   return `/search?q=${encodeURIComponent(subItem.query)}`;
                                 }
@@ -666,6 +677,8 @@ export default function Navbar({
                                       setSearchQuery(subItem.query);
                                       if (subItem.query === 'FTCE') {
                                         setActivePage('ftce');
+                                      } else if (subItem.query === 'Praxis') {
+                                        setActivePage('praxis');
                                       } else if (subItem.query === 'TEAS') {
                                         setActivePage('teas');
                                       } else {
@@ -864,7 +877,7 @@ export default function Navbar({
             {/* Mobile Nav Links */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginTop: '4px' }}>
               <a href="/catalog" onClick={(e) => { e.preventDefault(); setActivePage('catalog'); setMobileMenuOpen(false); }} style={{ fontSize: '0.95rem', fontWeight: '700', color: '#222222', cursor: 'pointer', textDecoration: 'none' }}>All Courses</a>
-              <a href="/academy/plans.html" onClick={(e) => { e.preventDefault(); setActivePage('plans'); setMobileMenuOpen(false); }} style={{ fontSize: '0.95rem', fontWeight: '700', color: '#222222', cursor: 'pointer', textDecoration: 'none' }}>Plans</a>
+              <a href="/pricing" onClick={(e) => { e.preventDefault(); setActivePage('plans'); setMobileMenuOpen(false); }} style={{ fontSize: '0.95rem', fontWeight: '700', color: '#222222', cursor: 'pointer', textDecoration: 'none' }}>Plans</a>
               <a href="/ftce" onClick={(e) => { e.preventDefault(); setSearchQuery('FTCE'); setActivePage('ftce'); setMobileMenuOpen(false); }} style={{ fontSize: '0.95rem', fontWeight: '700', color: '#222222', cursor: 'pointer', textDecoration: 'none' }}>FTCE Exams</a>
               <a href="/ftce" onClick={(e) => { e.preventDefault(); if (setHomeActiveTab) setHomeActiveTab('Test'); setActivePage('ftce'); setMobileMenuOpen(false); }} style={{ fontSize: '0.95rem', fontWeight: '700', color: '#222222', cursor: 'pointer', textDecoration: 'none' }}>FTCE Practice Tests</a>
               <a href="/ftce#testimonials" onClick={(e) => { e.preventDefault(); scrollToTestimonials(); }} style={{ fontSize: '0.95rem', fontWeight: '700', color: '#222222', cursor: 'pointer', textDecoration: 'none' }}>Testimonials</a>
