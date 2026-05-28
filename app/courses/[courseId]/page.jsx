@@ -1,86 +1,57 @@
-"use client";
+import CourseClientPage from './CourseClientPage';
+import { coursesData } from '@/src/data/courses';
 
-import { useParams } from 'next/navigation';
-import CourseDetail from '@/src/views/CourseDetail';
-import FtceCourse from '@/src/views/FtceCourse';
-import TeasLanding from '@/src/views/TeasLanding';
-import { useAppContext } from '../../providers';
+export async function generateStaticParams() {
+  return coursesData.map((course) => ({
+    courseId: course.id,
+  }));
+}
 
-export default function CourseDetailPage() {
-  const params = useParams();
-  const courseId = params?.courseId || '';
-  const { 
-    courses, 
-    selectedCourse, 
-    handleSelectLesson, 
-    setShowEmailPopup, 
-    setActivePage,
-    homeActiveTab,
-    setHomeActiveTab,
-    setSearchQuery,
-    handleSelectCourse
-  } = useAppContext();
-
-  // Find the course based on URL parameter
-  const course = courses.find(c => c.id.toLowerCase() === courseId.toLowerCase()) || selectedCourse;
+export async function generateMetadata({ params }) {
+  const { courseId } = await params;
+  const course = coursesData.find(c => c.id.toLowerCase() === courseId.toLowerCase());
 
   if (!course) {
-    return (
-      <div style={{ padding: '80px 40px', textAlign: 'center', fontFamily: "'Outfit', sans-serif" }}>
-        <h2 style={{ color: '#1f4e5a', marginBottom: '16px' }}>Course Not Found</h2>
-        <p style={{ color: '#4a5568', marginBottom: '24px' }}>We couldn't locate the requested course page.</p>
-        <button 
-          onClick={() => setActivePage('catalog')} 
-          style={{
-            backgroundColor: '#13809c',
-            color: '#ffffff',
-            border: 'none',
-            borderRadius: '6px',
-            padding: '12px 24px',
-            fontWeight: '700',
-            cursor: 'pointer'
-          }}
-        >
-          Go to Catalog
-        </button>
-      </div>
-    );
+    return {
+      title: "Course Not Found | PrepSumit",
+      description: "We couldn't locate the requested course page on PrepSumit.",
+    };
   }
 
-  if (course.id === 'ftce-professional-education-test') {
-    return (
-      <FtceCourse 
-        courses={courses}
-        activeTab={homeActiveTab}
-        setActiveTab={setHomeActiveTab}
-        setActivePage={setActivePage}
-        setSearchQuery={setSearchQuery}
-        onSelectCourse={handleSelectCourse}
-        onSelectLesson={handleSelectLesson}
-        onStartSignup={() => setShowEmailPopup(true)}
-      />
-    );
-  }
+  const title = `${course.title} Study Guide & Course | PrepSumit`;
+  const description = `Prepare for the ${course.title} with PrepSumit. Access visual micro-lessons, practice quizzes, and custom study guides for exam success.`;
+  const canonical = `https://prepsumit.com/courses/${course.id}`;
 
-  if (course.id === 'teas-prep') {
-    return (
-      <TeasLanding 
-        onBackToHome={() => setActivePage('home')}
-        onStartSignup={() => setShowEmailPopup(true)}
-        setActivePage={setActivePage}
-        setSearchQuery={setSearchQuery}
-        onSelectCourse={handleSelectCourse}
-        courses={courses}
-      />
-    );
-  }
+  return {
+    title,
+    description,
+    alternates: {
+      canonical,
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      siteName: "PrepSumit",
+      type: "website",
+      images: [
+        {
+          url: "https://prepsumit.com/images/og-image.webp",
+          width: 1200,
+          height: 630,
+          alt: `${course.title} | PrepSumit`
+        }
+      ]
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["https://prepsumit.com/images/og-image.webp"],
+    }
+  };
+}
 
-  return (
-    <CourseDetail 
-      course={course}
-      onBack={() => setActivePage('catalog')}
-      onSelectLesson={handleSelectLesson}
-      onStartSignup={() => setShowEmailPopup(true)}
-    />
-  );
+export default function CourseDetailPage() {
+  return <CourseClientPage />;
 }

@@ -305,7 +305,7 @@ export default function PraxisCourse({
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', position: 'relative', width: '340px', height: '260px' }} className="desktop-only">
               <Image 
-                src="/images/praxis-prep-illustration.png" 
+                src="/images/praxis-prep-illustration.webp" 
                 alt="Praxis Prep Illustration" 
                 fill 
                 style={{ objectFit: 'contain' }}
@@ -660,7 +660,7 @@ export default function PraxisCourse({
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', position: 'relative', width: '340px', height: '260px' }} className="desktop-only">
               <Image 
-                src="/images/praxis-prep-illustration.png" 
+                src="/images/praxis-prep-illustration.webp" 
                 alt="Praxis Prep Illustration" 
                 fill 
                 style={{ objectFit: 'contain' }}

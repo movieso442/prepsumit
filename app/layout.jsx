@@ -1,5 +1,20 @@
 import '../src/index.css';
 import AppProviders from './providers';
+import { Outfit, Plus_Jakarta_Sans } from 'next/font/google';
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  variable: '--font-outfit',
+  display: 'swap',
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-plus-jakarta',
+  display: 'swap',
+});
 
 export const metadata = {
   metadataBase: new URL("https://prepsumit.com"),
@@ -21,7 +36,7 @@ export const metadata = {
     siteName: "PrepSumit",
     images: [
       {
-        url: "https://prepsumit.com/images/og-image.png",
+        url: "https://prepsumit.com/images/og-image.webp",
         width: 1200,
         height: 630,
         alt: "PrepSumit logo"
@@ -33,7 +48,7 @@ export const metadata = {
     url: "https://prepsumit.com/",
     title: "PrepSumit | Online Courses for College Credit, Exam Prep & Test Preparation",
     description: "PrepSumit is a leading online learning platform offering visual micro-lessons, practice quizzes, and custom study guides for exam prep, college credit, and teacher certification.",
-    images: ["https://prepsumit.com/images/og-image.png"],
+    images: ["https://prepsumit.com/images/og-image.webp"],
   },
   alternates: {
     canonical: "https://prepsumit.com/",
@@ -51,10 +66,8 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en-US">
+    <html lang="en-US" className={`${outfit.variable} ${plusJakartaSans.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         
         {/* Google Knowledge Graph Panel (Organization Schema) */}
         <script 
@@ -65,7 +78,7 @@ export default function RootLayout({ children }) {
               "@type": "Organization",
               "name": "PrepSumit",
               "url": "https://prepsumit.com",
-              "logo": "https://prepsumit.com/images/prepsumit-logo.png",
+              "logo": "https://prepsumit.com/images/prepsumit-logo.webp",
               "foundingDate": "2026",
               "description": "Online learning platform provides video lessons, practice questions, and custom study guides for exam preparation and mastering concepts. It offers college courses, K-12 educator resources, and professional development. AI tools personalize learning paths and assist with lesson planning.",
               "sameAs": [

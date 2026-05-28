@@ -2,7 +2,31 @@ import Link from 'next/link';
 
 export const metadata = {
   title: "Terms of Use | PrepSumit",
-  description: "Read the PrepSumit Terms of Use for rules and conditions that apply when using prepsumit.com."
+  description: "Read the PrepSumit Terms of Use for rules and conditions that apply when using prepsumit.com.",
+  alternates: {
+    canonical: "https://prepsumit.com/terms-of-use",
+  },
+  openGraph: {
+    title: "Terms of Use | PrepSumit",
+    description: "Read the PrepSumit Terms of Use for rules and conditions that apply when using prepsumit.com.",
+    url: "https://prepsumit.com/terms-of-use",
+    siteName: "PrepSumit",
+    type: "website",
+    images: [
+      {
+        url: "https://prepsumit.com/images/og-image.webp",
+        width: 1200,
+        height: 630,
+        alt: "Terms of Use | PrepSumit"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terms of Use | PrepSumit",
+    description: "Read the PrepSumit Terms of Use for rules and conditions that apply when using prepsumit.com.",
+    images: ["https://prepsumit.com/images/og-image.webp"],
+  }
 };
 
 export default function TermsOfUsePage() {

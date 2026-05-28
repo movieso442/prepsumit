@@ -1,20 +1,14 @@
-"use client";
+import SignupClientPage from './SignupClientPage';
 
-import Signup from '@/src/views/Signup';
-import { useAppContext } from '../providers';
+export const metadata = {
+  title: "Create Your Account | PrepSumit",
+  description: "Sign up for an account on PrepSumit to start preparing for exams and tracking your progress.",
+  robots: {
+    index: false,
+    follow: false,
+  }
+};
 
 export default function SignupPage() {
-  const { 
-    signupDetails, 
-    handleSignupComplete, 
-    setActivePage 
-  } = useAppContext();
-
-  return (
-    <Signup 
-      initialData={signupDetails}
-      onComplete={handleSignupComplete}
-      onBack={() => setActivePage('home')}
-    />
-  );
+  return <SignupClientPage />;
 }

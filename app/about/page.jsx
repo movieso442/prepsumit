@@ -14,7 +14,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "https://prepsumit.com/images/og-image.png",
+        url: "https://prepsumit.com/images/og-image.webp",
         width: 1200,
         height: 630,
         alt: "About Us | PrepSumit"
@@ -25,7 +25,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "About Us | PrepSumit",
     description: "Learn about PrepSumit's mission, online courses, certification prep, and learning pathways for educators and working scholars.",
-    images: ["https://prepsumit.com/images/og-image.png"],
+    images: ["https://prepsumit.com/images/og-image.webp"],
   }
 };
 
@@ -63,7 +63,7 @@ export default function AboutPage() {
           </div>
           <div style={{ position: 'relative', width: '100%', height: '240px' }}>
             <Image 
-              src="/images/hero-exam-prep.png" 
+              src="/images/hero-exam-prep.webp" 
               alt="Engaged Student Studying Illustration" 
               fill 
               style={{ objectFit: 'cover', borderRadius: '8px' }}

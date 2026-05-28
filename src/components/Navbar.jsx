@@ -524,7 +524,7 @@ export default function Navbar({
               onClick={(e) => { e.preventDefault(); setActivePage('home'); setSearchQuery(''); }}
             >
               <Image 
-                src="/images/prepsumit-logo.png" 
+                src="/images/prepsumit-logo.webp" 
                 alt="PrepSumit logo" 
                 width={34} 
                 height={34} 

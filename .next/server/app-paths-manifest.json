@@ -1,6 +1,0 @@
-{
-  "/api/account-request/route": "app/api/account-request/route.js",
-  "/page": "app/page.js",
-  "/signup/page": "app/signup/page.js",
-  "/checkout/page": "app/checkout/page.js"
-}

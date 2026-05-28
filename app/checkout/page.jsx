@@ -1,23 +1,14 @@
-"use client";
+import CheckoutClientPage from './CheckoutClientPage';
 
-import Checkout from '@/src/views/Checkout';
-import { useAppContext } from '../providers';
+export const metadata = {
+  title: "Secure Checkout | PrepSumit",
+  description: "Complete your study plan registration securely on PrepSumit.",
+  robots: {
+    index: false,
+    follow: false,
+  }
+};
 
 export default function CheckoutPage() {
-  const { 
-    signupData, 
-    handleCheckoutComplete, 
-    selectedCourse, 
-    setActivePage 
-  } = useAppContext();
-
-  return (
-    <Checkout 
-      signupData={signupData}
-      onCheckoutComplete={handleCheckoutComplete}
-      selectedCourse={selectedCourse}
-      onBack={() => setActivePage('signup')}
-      setActivePage={setActivePage}
-    />
-  );
+  return <CheckoutClientPage />;
 }

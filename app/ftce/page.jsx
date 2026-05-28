@@ -14,7 +14,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "https://prepsumit.com/images/og-image.png",
+        url: "https://prepsumit.com/images/og-image.webp",
         width: 1200,
         height: 630,
         alt: "FTCE Prep & Practice Tests | PrepSumit"
@@ -25,7 +25,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "FTCE Prep & Practice Tests | PrepSumit",
     description: "Prepare for the FTCE with PrepSumit study resources, practice tests, guided exam preparation, and flexible plans.",
-    images: ["https://prepsumit.com/images/og-image.png"],
+    images: ["https://prepsumit.com/images/og-image.webp"],
   }
 };
 

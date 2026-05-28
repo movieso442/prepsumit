@@ -2,7 +2,31 @@ import Link from 'next/link';
 
 export const metadata = {
   title: "Privacy Policy | PrepSumit",
-  description: "Read the PrepSumit Privacy Policy to understand how prepsumit.com collects, uses, protects, and manages user information."
+  description: "Read the PrepSumit Privacy Policy to understand how prepsumit.com collects, uses, protects, and manages user information.",
+  alternates: {
+    canonical: "https://prepsumit.com/privacy-policy",
+  },
+  openGraph: {
+    title: "Privacy Policy | PrepSumit",
+    description: "Read the PrepSumit Privacy Policy to understand how prepsumit.com collects, uses, protects, and manages user information.",
+    url: "https://prepsumit.com/privacy-policy",
+    siteName: "PrepSumit",
+    type: "website",
+    images: [
+      {
+        url: "https://prepsumit.com/images/og-image.webp",
+        width: 1200,
+        height: 630,
+        alt: "Privacy Policy | PrepSumit"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy | PrepSumit",
+    description: "Read the PrepSumit Privacy Policy to understand how prepsumit.com collects, uses, protects, and manages user information.",
+    images: ["https://prepsumit.com/images/og-image.webp"],
+  }
 };
 
 export default function PrivacyPolicyPage() {

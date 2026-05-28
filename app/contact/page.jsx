@@ -14,7 +14,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "https://prepsumit.com/images/og-image.png",
+        url: "https://prepsumit.com/images/og-image.webp",
         width: 1200,
         height: 630,
         alt: "Contact Customer Support | PrepSumit"
@@ -25,7 +25,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Contact Customer Support | PrepSumit",
     description: "Contact PrepSumit customer support, telephone support lines, billing questions, and student account validation help.",
-    images: ["https://prepsumit.com/images/og-image.png"],
+    images: ["https://prepsumit.com/images/og-image.webp"],
   }
 };
 
@@ -93,7 +93,7 @@ export default function ContactPage() {
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '16px' }}>
           <div style={{ position: 'relative', width: '100%', height: '240px', maxWidth: '360px' }}>
             <Image 
-              src="/images/support-contact-illustration.png" 
+              src="/images/support-contact-illustration.webp" 
               alt="Friendly Support Agents Illustration" 
               fill 
               style={{ objectFit: 'contain' }}

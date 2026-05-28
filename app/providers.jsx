@@ -4,8 +4,10 @@ import { createContext, useContext, useState, useEffect, Suspense } from 'react'
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 import Navbar from '@/src/components/Navbar';
 import Footer from '@/src/components/Footer';
-import AITutor from '@/src/components/AITutor';
-import EmailPopup from '@/src/components/EmailPopup';
+import dynamic from 'next/dynamic';
+
+const AITutor = dynamic(() => import('@/src/components/AITutor'), { ssr: false });
+const EmailPopup = dynamic(() => import('@/src/components/EmailPopup'), { ssr: false });
 import { coursesData, userStatsData } from '@/src/data/courses';
 import { X, Info } from 'lucide-react';
 import Image from 'next/image';
@@ -369,7 +371,7 @@ function AppProvidersContent({ children }) {
               onClick={() => { router.push('/'); }}
             >
               <Image 
-                src="/images/prepsumit-logo.png" 
+                src="/images/prepsumit-logo.webp" 
                 alt="PrepSumit logo" 
                 width={26} 
                 height={26} 

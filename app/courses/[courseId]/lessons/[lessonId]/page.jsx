@@ -1,56 +1,62 @@
-"use client";
+import LessonClientPage from './LessonClientPage';
+import { coursesData } from '@/src/data/courses';
 
-import { useParams } from 'next/navigation';
-import LessonView from '@/src/views/LessonView';
-import { useAppContext } from '../../../../providers';
+export async function generateStaticParams() {
+  return coursesData.flatMap((course) => {
+    if (!course.lessons) return [];
+    return course.lessons.map((lesson) => ({
+      courseId: course.id,
+      lessonId: lesson.id,
+    }));
+  });
+}
 
-export default function LessonViewPage() {
-  const params = useParams();
-  const courseId = params?.courseId || '';
-  const lessonId = params?.lessonId || '';
-  const { 
-    courses, 
-    selectedCourse, 
-    selectedLesson, 
-    setActivePage, 
-    handleSelectLesson, 
-    handleQuizComplete 
-  } = useAppContext();
-
-  // Find course and lesson based on URL parameters
-  const course = courses.find(c => c.id.toLowerCase() === courseId.toLowerCase()) || selectedCourse;
-  const lesson = course?.lessons?.find(l => l.id.toLowerCase() === lessonId.toLowerCase()) || selectedLesson;
+export async function generateMetadata({ params }) {
+  const { courseId, lessonId } = await params;
+  const course = coursesData.find(c => c.id.toLowerCase() === courseId.toLowerCase());
+  const lesson = course?.lessons?.find(l => l.id.toLowerCase() === lessonId.toLowerCase());
 
   if (!course || !lesson) {
-    return (
-      <div style={{ padding: '80px 40px', textAlign: 'center', fontFamily: "'Outfit', sans-serif" }}>
-        <h2 style={{ color: '#1f4e5a', marginBottom: '16px' }}>Lesson Not Found</h2>
-        <p style={{ color: '#4a5568', marginBottom: '24px' }}>We couldn't locate the requested lesson page.</p>
-        <button 
-          onClick={() => setActivePage('catalog')} 
-          style={{
-            backgroundColor: '#13809c',
-            color: '#ffffff',
-            border: 'none',
-            borderRadius: '6px',
-            padding: '12px 24px',
-            fontWeight: '700',
-            cursor: 'pointer'
-          }}
-        >
-          Go to Catalog
-        </button>
-      </div>
-    );
+    return {
+      title: "Lesson Not Found | PrepSumit",
+      description: "We couldn't locate the requested lesson page on PrepSumit.",
+    };
   }
 
-  return (
-    <LessonView 
-      course={course}
-      lesson={lesson}
-      onBackToCourse={() => setActivePage('detail')}
-      onSelectLesson={handleSelectLesson}
-      onQuizComplete={handleQuizComplete}
-    />
-  );
+  const title = `${lesson.title} - ${course.title} Lesson | PrepSumit`;
+  const description = `Learn ${lesson.title} in the ${course.title} study guide. PrepSumit provides visual micro-lessons and practice questions.`;
+  const canonical = `https://prepsumit.com/courses/${course.id}/lessons/${lesson.id}`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical,
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      siteName: "PrepSumit",
+      type: "website",
+      images: [
+        {
+          url: "https://prepsumit.com/images/og-image.webp",
+          width: 1200,
+          height: 630,
+          alt: `${lesson.title} | PrepSumit`
+        }
+      ]
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["https://prepsumit.com/images/og-image.webp"],
+    }
+  };
+}
+
+export default function LessonDetailPage() {
+  return <LessonClientPage />;
 }

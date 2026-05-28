@@ -1,22 +1,14 @@
-"use client";
+import DashboardClientPage from './DashboardClientPage';
 
-import Dashboard from '@/src/views/Dashboard';
-import { useAppContext } from '../providers';
+export const metadata = {
+  title: "Student Dashboard | PrepSumit",
+  description: "View your course progress, XP points, study goals, and certification progress on your student dashboard.",
+  robots: {
+    index: false,
+    follow: false,
+  }
+};
 
 export default function DashboardPage() {
-  const { 
-    userStats, 
-    courses, 
-    handleResumeLesson, 
-    setActivePage 
-  } = useAppContext();
-
-  return (
-    <Dashboard 
-      userStats={userStats}
-      courses={courses}
-      onResumeLesson={handleResumeLesson}
-      setActivePage={setActivePage}
-    />
-  );
+  return <DashboardClientPage />;
 }
