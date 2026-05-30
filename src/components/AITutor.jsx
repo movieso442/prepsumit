@@ -330,6 +330,7 @@ export default function AITutor({ course, lesson }) {
               className="chat-input"
               style={{
                 flex: 1,
+                minWidth: '0', // Allow it to shrink
                 padding: '10px 14px',
                 borderRadius: '20px',
                 fontSize: '0.85rem',
@@ -351,7 +352,8 @@ export default function AITutor({ course, lesson }) {
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: 'pointer',
-                transition: 'background-color 0.15s'
+                transition: 'background-color 0.15s',
+                flexShrink: 0 // Make sure button never shrinks
               }}
               onMouseOver={e => e.currentTarget.style.backgroundColor = 'var(--primary-hover)'}
               onMouseOut={e => e.currentTarget.style.backgroundColor = 'var(--primary)'}
@@ -361,6 +363,20 @@ export default function AITutor({ course, lesson }) {
           </form>
         </div>
       )}
+      
+      {/* Local styles for mobile input padding reduction */}
+      <style>{`
+        @media (max-width: 480px) {
+          .chat-input {
+            padding: 8px 12px !important;
+            font-size: 0.8rem !important;
+          }
+          .chatbot-window form {
+            padding: 10px 12px !important;
+            gap: 8px !important;
+          }
+        }
+      `}</style>
     </>
   );
 }
