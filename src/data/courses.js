@@ -107,6 +107,82 @@ export const coursesData = [
             explanation: "According to FTCE policies, candidates must wait at least 31 calendar days from the date of the failed attempt before retaking the same exam."
           }
         ]
+      },
+      {
+        id: "ftce-instructional-design",
+        title: "FTCE Lesson: Instructional Design & Planning Competencies",
+        duration: "10 mins",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        summary: "Master lesson planning, learning objectives, and curriculum mapping aligned with Florida standards for the FTCE exam.",
+        transcript: [
+          { time: "00:00", text: "Welcome. Let's outline Florida standard planning and instructional designs for the FTCE." }
+        ],
+        quiz: [
+          {
+            id: "ftce-q6",
+            question: "When planning a lesson, which of the following should be established first?",
+            options: ["The classroom layout", "Learning objectives based on state standards", "The grading scale for homework", "The textbook publisher"],
+            answer: 1,
+            explanation: "Educational best practice requires first defining standard-aligned learning objectives, then mapping assessments and activities to those objectives."
+          }
+        ]
+      },
+      {
+        id: "ftce-student-assessment",
+        title: "FTCE Lesson: Student Assessment & Data Interpretation",
+        duration: "9 mins",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        summary: "Learn to construct and interpret formative and summative assessments under FTCE testing guidelines.",
+        transcript: [
+          { time: "00:00", text: "In this lesson, we study formative and summative assessments for FTCE candidates." }
+        ],
+        quiz: [
+          {
+            id: "ftce-q7",
+            question: "Which of the following is the primary purpose of formative assessment?",
+            options: ["To assign final grades for a report card", "To rank student achievements in a school district", "To monitor learning progress and guide instruction dynamically", "To certify professional mastery for graduation"],
+            answer: 2,
+            explanation: "Formative assessments are designed to give ongoing, diagnostic feedback to help teachers adjust instruction and students improve their learning."
+          }
+        ]
+      },
+      {
+        id: "ftce-safe-environments",
+        title: "FTCE Lesson: Creating Safe Learning Environments",
+        duration: "9 mins",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        summary: "Explore classroom management, student safety, and positive behavioral support strategies for the FTCE.",
+        transcript: [
+          { time: "00:00", text: "Let's explore building secure, positive, and inclusive learning environments for the FTCE." }
+        ],
+        quiz: [
+          {
+            id: "ftce-q8",
+            question: "Which approach is most effective for establishing classroom expectations?",
+            options: ["Creating rules collaboratively with students and practicing them regularly", "Posting a long list of prohibited behaviors on day one", "Using severe penalties for minor infractions to deter disruption", "Allowing students to do whatever they want without rules"],
+            answer: 0,
+            explanation: "Co-creating classroom rules and establishing predictable routines fosters student ownership, respect, and self-regulation."
+          }
+        ]
+      },
+      {
+        id: "ftce-educator-ethics",
+        title: "FTCE Lesson: Code of Ethics for Florida Educators",
+        duration: "8 mins",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        summary: "A deep dive into the legal requirements, professional conduct principles, and ethical standards tested on the FTCE.",
+        transcript: [
+          { time: "00:00", text: "In our final FTCE lesson, we cover the Code of Ethics and Principles of Professional Conduct." }
+        ],
+        quiz: [
+          {
+            id: "ftce-q9",
+            question: "Under the Code of Ethics for Florida Educators, the educator's primary professional concern is always: ",
+            options: ["The school district's reputation", "The student and the development of the student's potential", "The local board regulations", "Maintaining personal political neutrality"],
+            answer: 1,
+            explanation: "According to the official Code of Ethics in Florida, the educator's primary concern must be for the student and the development of the student's potential."
+          }
+        ]
       }
     ],
     flashcards: [
@@ -715,11 +791,11 @@ export const coursesData = [
   },
   {
     id: "teas-prep",
-    title: "TEAS Test Prep | Test of Essential Academic Skills Exam",
+    title: "ATI TEAS Test Prep | Test of Essential Academic Skills Exam",
     subject: "Nursing Exams",
     level: "Nursing Certification",
     duration: "4 Weeks",
-    lessonsCount: 42,
+    lessonsCount: 7,
     rating: 4.7,
     color: "#007791",
     lightBg: "#f2f9fa",
@@ -768,10 +844,475 @@ export const coursesData = [
             explanation: "To convert a fraction to a percentage, divide 3 by 8 to get 0.375, then multiply by 100 to get 37.5%."
           }
         ]
+      },
+      {
+        id: "teas-math-algebra",
+        title: "TEAS Math: Algebra & Data Interpretation",
+        duration: "8 mins",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        summary: "Master algebraic expressions, equations, and visual data representations. Learn to parse graphs and solve variables under TEAS exam conditions.",
+        transcript: [
+          { time: "00:00", text: "Welcome back. Today we are practicing algebraic equations and reading graphs for the TEAS." }
+        ],
+        quiz: [
+          {
+            id: "teas-q3",
+            question: "Solve for x: 3x - 5 = 16.",
+            options: ["3", "7", "9", "21"],
+            answer: 1,
+            explanation: "Add 5 to both sides: 3x = 21. Divide by 3: x = 7."
+          }
+        ]
+      },
+      {
+        id: "teas-science-anatomy",
+        title: "TEAS Science: Human Anatomy & Physiology",
+        duration: "11 mins",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        summary: "Deep dive into the organ systems of the human body. Focus on cardiovascular, respiratory, and neuromuscular systems frequently tested on the TEAS.",
+        transcript: [
+          { time: "00:00", text: "Hello candidates. Let's analyze the human cardiovascular and respiratory systems standard details." }
+        ],
+        quiz: [
+          {
+            id: "teas-q4",
+            question: "Which chamber of the heart pumps oxygenated blood to the body?",
+            options: ["Right Atrium", "Right Ventricle", "Left Atrium", "Left Ventricle"],
+            answer: 3,
+            explanation: "The left ventricle receives oxygenated blood from the left atrium and pumps it out through the aorta to the systemic circulation."
+          }
+        ]
+      },
+      {
+        id: "teas-science-life",
+        title: "TEAS Science: Cell Structures & Genetics",
+        duration: "10 mins",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        summary: "Review fundamental life science concepts. Learn transcription, translation, DNA replication, and Mendelian inheritance patterns for TEAS preparation.",
+        transcript: [
+          { time: "00:00", text: "Today we will review standard cell organelles, genetics, and Punnett squares." }
+        ],
+        quiz: [
+          {
+            id: "teas-q5",
+            question: "What is the standard ratio of phenotypes in a dihybrid cross of two heterozygous individuals?",
+            options: ["3:1", "9:3:3:1", "1:2:1", "9:7"],
+            answer: 1,
+            explanation: "Mendel's second law predicts a phenotypic ratio of 9:3:3:1 in a dihybrid cross between two heterozygotes."
+          }
+        ]
+      },
+      {
+        id: "teas-reading-details",
+        title: "TEAS Reading: Key Ideas & Textual Evidence",
+        duration: "9 mins",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        summary: "Learn to distinguish between main ideas, topic sentences, supporting details, and draw logical conclusions from text passages.",
+        transcript: [
+          { time: "00:00", text: "Let's work on critical reading comprehension. We will learn to extract key ideas and details." }
+        ],
+        quiz: [
+          {
+            id: "teas-q6",
+            question: "Which of the following describes a supporting detail in a text passage?",
+            options: ["The primary message of the author", "An explanation, fact, or illustration that backs up the main point", "The historical context of the publication", "A counterargument presented by the author"],
+            answer: 1,
+            explanation: "Supporting details clarify, expand on, or prove the main idea of a passage."
+          }
+        ]
+      },
+      {
+        id: "teas-english-conventions",
+        title: "TEAS English: Conventions of Standard English",
+        duration: "8 mins",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        summary: "Enhance spelling, punctuation, grammar, and sentence structures. Identify subject-verb agreement and pronoun-antecedent agreement rules.",
+        transcript: [
+          { time: "00:00", text: "In this lesson, we cover English grammar rules, spelling conventions, and syntax." }
+        ],
+        quiz: [
+          {
+            id: "teas-q7",
+            question: "Identify the sentence with correct subject-verb agreement.",
+            options: ["The group of students are going to the lab.", "The group of students is going to the lab.", "Neither the teacher nor the students is present.", "Each of the options are correct."],
+            answer: 1,
+            explanation: "Collective nouns like 'group' take a singular verb ('is') when acting as a single unit."
+          }
+        ]
+      },
+      {
+        id: "teas-science-reasoning",
+        title: "TEAS Lesson: Scientific Reasoning & Methodology",
+        duration: "10 mins",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        summary: "Learn standard scientific reasoning, experimental design controls, and data analysis strategies for the TEAS Science section.",
+        transcript: [
+          { time: "00:00", text: "Welcome back. Today we cover scientific reasoning and experiment controls on the TEAS." }
+        ],
+        quiz: [
+          {
+            id: "teas-q8",
+            question: "Which of the following is the independent variable in an experiment?",
+            options: ["The factor that is measured or observed", "The factor that is manipulated or changed by the researcher", "The constant value that does not change", "The group that does not receive the treatment"],
+            answer: 1,
+            explanation: "The independent variable is the condition or factor that is deliberately manipulated by the experimenter."
+          }
+        ]
       }
     ],
     flashcards: [
-      { id: "teas-fc1", term: "TEAS", definition: "Test of Essential Academic Skills, a standardized test used for nursing school admissions." }
+      { id: "teas-fc1", term: "TEAS", definition: "Test of Essential Academic Skills, a standardized test used for nursing school admissions." },
+      { id: "teas-fc2", term: "Left Ventricle", definition: "Chamber of the heart that pumps oxygenated blood to the body via systemic circulation." }
+    ]
+  },
+  {
+    id: "rica-prep",
+    title: "RICA Test Prep | California Reading Instruction Exam",
+    subject: "Teacher Certification",
+    level: "Teacher Certification",
+    duration: "5 Weeks",
+    lessonsCount: 7,
+    rating: 4.8,
+    color: "#13809c",
+    lightBg: "rgba(19, 128, 156, 0.08)",
+    practiceQuestions: 180,
+    practiceTests: 2,
+    videos: 24,
+    hoursOfVideo: 3.5,
+    image: "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?w=500&auto=format&fit=crop&q=60",
+    description: "PrepSumit's RICA study guide provides a comprehensive review of the reading instruction domains. Master the competencies in Planning Reading Instruction, Word Analysis, Vocabulary, and Reading Comprehension to pass the California RICA exam with confidence.",
+    lessons: [
+      {
+        id: "rica-planning-assessment",
+        title: "RICA Lesson: Planning Reading Instruction & Assessment",
+        duration: "9 mins",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        summary: "Learn how to use formal and informal assessments to diagnose reading difficulties and design standard-aligned instruction.",
+        transcript: [
+          { time: "00:00", text: "Welcome to RICA Exam Prep. Today we look at reading assessments." }
+        ],
+        quiz: [
+          {
+            id: "rica-q1",
+            question: "Which type of assessment is most appropriate for identifying a student's specific reading level?",
+            options: ["A norm-referenced standardized test", "An Informal Reading Inventory (IRI)", "A spelling test", "A parent questionnaire"],
+            answer: 1,
+            explanation: "An IRI provides teachers with diagnostics on independent, instructional, and frustration reading levels."
+          }
+        ]
+      },
+      {
+        id: "rica-phonemic-awareness",
+        title: "RICA Lesson: Phonological and Phonemic Awareness",
+        duration: "10 mins",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        summary: "Understand the progression of phonological skills. Discover strategies to teach segmenting, blending, and phoneme substitution.",
+        transcript: [
+          { time: "00:00", text: "Let's explore phonological awareness, the foundation of word analysis." }
+        ],
+        quiz: [
+          {
+            id: "rica-q2",
+            question: "Which of the following describes phonemic awareness?",
+            options: ["Connecting letters to their corresponding sounds", "The ability to distinguish individual sounds in spoken words", "Spelling words phonetically", "Reading text with expression"],
+            answer: 1,
+            explanation: "Phonemic awareness is a subcategory of phonological awareness focusing exclusively on identifying and manipulating individual sounds (phonemes) in spoken words."
+          }
+        ]
+      },
+      {
+        id: "rica-phonics-sight-words",
+        title: "RICA Lesson: Phonics & Sight Words",
+        duration: "8 mins",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        summary: "Master systematic phonics instruction strategies, decoding skills, and teaching irregular high-frequency sight words.",
+        transcript: [
+          { time: "00:00", text: "Today we focus on systematic phonics and teaching sight words." }
+        ],
+        quiz: [
+          {
+            id: "rica-q3",
+            question: "Which of the following words contains a consonant digraph?",
+            options: ["Blast", "Frog", "Ship", "Trip"],
+            answer: 2,
+            explanation: "A consonant digraph is a pair of consonants that make a single sound. 'Sh' in 'ship' is a consonant digraph."
+          }
+        ]
+      },
+      {
+        id: "rica-syllabic-analysis",
+        title: "RICA Lesson: Syllabic & Morphemic Analysis",
+        duration: "10 mins",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        summary: "Learn how to teach multisyllabic word decoding using prefixes, suffixes, root words, and structural analysis rules.",
+        transcript: [
+          { time: "00:00", text: "We will examine prefix, suffix, and morphemic structures." }
+        ],
+        quiz: [
+          {
+            id: "rica-q4",
+            question: "What is a morpheme?",
+            options: ["The smallest unit of sound in a language", "The smallest unit of meaning in a language", "A syllable containing a long vowel", "A silent letter combination"],
+            answer: 1,
+            explanation: "A morpheme is the smallest grammatical unit of meaning in a language (e.g., 'un-' or 'talk')."
+          }
+        ]
+      },
+      {
+        id: "rica-reading-vocabulary",
+        title: "RICA Lesson: Reading Vocabulary & Academic Language",
+        duration: "9 mins",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        summary: "Develop strategies for teaching tier 2 and tier 3 vocabulary words, using context clues, and fostering word consciousness.",
+        transcript: [
+          { time: "00:00", text: "Let's review vocabulary development and the tier structure." }
+        ],
+        quiz: [
+          {
+            id: "rica-q5",
+            question: "Which of the following represents a Tier 2 vocabulary word?",
+            options: ["Analyze", "Table", "Photosynthesis", "Happy"],
+            answer: 0,
+            explanation: "Tier 2 words are high-frequency words that appear across multiple academic content areas (e.g., analyze, evaluate)."
+          }
+        ]
+      },
+      {
+        id: "rica-comprehension-literal",
+        title: "RICA Lesson: Literal, Inferential, & Evaluative Comprehension",
+        duration: "11 mins",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        summary: "Guide students through comprehension strategies. Differentiate between text-explicit facts and reading between the lines.",
+        transcript: [
+          { time: "00:00", text: "Today we are teaching literal, inferential, and evaluative reading comprehension." }
+        ],
+        quiz: [
+          {
+            id: "rica-q6",
+            question: "Which question promotes inferential reading comprehension?",
+            options: ["Who is the main character of the story?", "Where does the story take place?", "Why did the character make that choice, based on their actions?", "What was the final event in the plot?"],
+            answer: 2,
+            explanation: "Inferential comprehension requires reading between the lines and using text clues to draw logical conclusions."
+          }
+        ]
+      },
+      {
+        id: "rica-literary-informational",
+        title: "RICA Lesson: Literary & Informational Texts",
+        duration: "9 mins",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        summary: "Analyze narrative and expository text structures. Learn to teach story mapping, main ideas, and summarizing techniques.",
+        transcript: [
+          { time: "00:00", text: "Let's finish the RICA modules by analyzing literary and informational structures." }
+        ],
+        quiz: [
+          {
+            id: "rica-q7",
+            question: "Which graphic organizer is most effective for summarizing a narrative text's structure?",
+            options: ["A Venn diagram", "A story map", "A KWL chart", "A T-chart"],
+            answer: 1,
+            explanation: "A story map helps students identify characters, setting, conflict, plot events, and resolution in a narrative text."
+          }
+        ]
+      },
+      {
+        id: "rica-reading-fluency",
+        title: "RICA Lesson: Fostering Reading Fluency & Expression",
+        duration: "10 mins",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        summary: "Explore strategies to improve oral reading accuracy, rate, prosody, and overall reading fluency for the RICA exam.",
+        transcript: [
+          { time: "00:00", text: "Today we are discussing techniques to support reading fluency and expressive prosody." }
+        ],
+        quiz: [
+          {
+            id: "rica-q8",
+            question: "Which component of reading fluency is directly related to reading with appropriate expression and phrasing?",
+            options: ["Accuracy", "Rate", "Prosody", "Automaticity"],
+            answer: 2,
+            explanation: "Prosody refers to reading with appropriate expression, pitch, intonation, and phrasing, which mirrors spoken language."
+          }
+        ]
+      }
+    ],
+    flashcards: [
+      { id: "rica-fc1", term: "Informal Reading Inventory (IRI)", definition: "An individually-administered assessment that determines a student's reading level." },
+      { id: "rica-fc2", term: "Phonemic Awareness", definition: "The specific ability to focus on and manipulate individual phonemes in spoken syllables and words." }
+    ]
+  },
+  {
+    id: "texes-prep",
+    title: "TExES Test Prep | Texas Examinations of Educator Standards",
+    subject: "Teacher Certification",
+    level: "Teacher Certification",
+    duration: "6 Weeks",
+    lessonsCount: 7,
+    rating: 4.9,
+    color: "#ffb627",
+    lightBg: "rgba(255, 182, 39, 0.08)",
+    practiceQuestions: 210,
+    practiceTests: 3,
+    videos: 30,
+    hoursOfVideo: 4.5,
+    image: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=500&auto=format&fit=crop&q=60",
+    description: "PrepSumit's TExES preparation course helps future Texas educators pass their certification exams. Designed around Texas teacher competencies and the PPR standards, this course covers instructional design, classroom environment, assessment, and professional responsibilities.",
+    lessons: [
+      {
+        id: "texes-ppr-intro",
+        title: "TExES Lesson: Introduction to TExES PPR Competencies",
+        duration: "8 mins",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        summary: "Overview of the Pedagogy and Professional Responsibilities (PPR) framework and its application in Texas schools.",
+        transcript: [
+          { time: "00:00", text: "Welcome future Texas teachers. Let's outline the PPR exam structure." }
+        ],
+        quiz: [
+          {
+            id: "texes-q1",
+            question: "Under the TExES PPR standards, what should be the primary driver of instructional planning?",
+            options: ["The teacher's personal interests", "The available classroom resources", "The students' developmental characteristics and needs", "The school principal's instructions"],
+            answer: 2,
+            explanation: "Instruction must be designed to align with students' developmental stages, experiences, and cultural backgrounds."
+          }
+        ]
+      },
+      {
+        id: "texes-designing-instruction",
+        title: "TExES Lesson: Designing Aligned Instruction & TEKS",
+        duration: "9 mins",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        summary: "Learn how to align lesson objectives with the Texas Essential Knowledge and Skills (TEKS) and design meaningful activities.",
+        transcript: [
+          { time: "00:00", text: "Today we focus on aligning our classroom objectives with the state curriculum: TEKS." }
+        ],
+        quiz: [
+          {
+            id: "texes-q2",
+            question: "What do the TEKS represent in Texas public education?",
+            options: ["Texas Teacher evaluation guidelines", "The state curriculum standards detailing what students should know and do", "A standardized testing program", "Classroom discipline policies"],
+            answer: 1,
+            explanation: "TEKS (Texas Essential Knowledge and Skills) are the state standards outlining what students should know and be able to do in each grade level and subject."
+          }
+        ]
+      },
+      {
+        id: "texes-classroom-environment",
+        title: "TExES Lesson: Creating a Productive Classroom Environment",
+        duration: "10 mins",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        summary: "Discover strategies for student engagement, physical classroom layout, and managing student behavior in Texas public schools.",
+        transcript: [
+          { time: "00:00", text: "In this module, we examine proactive classroom management and establishing routines." }
+        ],
+        quiz: [
+          {
+            id: "texes-q3",
+            question: "Which classroom management strategy is most effective for promoting student self-regulation?",
+            options: ["Creating clear, co-created rules and consistent daily routines", "Using a strict reward-and-punishment system", "Ignoring minor rule infractions", "Separating misbehaving students permanently"],
+            answer: 0,
+            explanation: "Establishing transparent expectations and stable routines helps students feel safe and learn to manage their own behaviors."
+          }
+        ]
+      },
+      {
+        id: "texes-effective-instruction",
+        title: "TExES Lesson: Responsive Instruction & Assessments",
+        duration: "11 mins",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        summary: "Learn to use active learning strategies, check for understanding, and adjust instruction dynamically using formative data.",
+        transcript: [
+          { time: "00:00", text: "Let's master instruction delivery and modifying plans on the fly." }
+        ],
+        quiz: [
+          {
+            id: "texes-q4",
+            question: "A teacher observes that several students are struggling with a concept during guided practice. What is the best immediate response?",
+            options: ["Move on to the next topic to stay on schedule", "Reteach the concept using a different instructional approach", "Assign the homework anyway and grade it leniently", "Administer a graded test on the topic"],
+            answer: 1,
+            explanation: "Responsive instruction requires adjusting strategies when formative checks indicate students are not mastering the objective."
+          }
+        ]
+      },
+      {
+        id: "texes-professional-roles",
+        title: "TExES Lesson: Professional Roles & Ethical Responsibilities",
+        duration: "9 mins",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        summary: "Review Texas education laws, professional ethics, and effective methods to collaborate with parents and administrators.",
+        transcript: [
+          { time: "00:00", text: "We will study the Texas Educators Code of Ethics and legal rules today." }
+        ],
+        quiz: [
+          {
+            id: "texes-q5",
+            question: "According to the Educators' Code of Ethics in Texas, what is the primary duty of an educator?",
+            options: ["To comply with all school district administrative directives", "To maintain professional relationships and protect student safety and welfare", "To ensure all students pass standardized tests", "To participate in community politics"],
+            answer: 1,
+            explanation: "Texas educators must adhere to standards of professional conduct, ensuring student safety, equity, and ethical behaviors."
+          }
+        ]
+      },
+      {
+        id: "texes-core-science-social",
+        title: "TExES Lesson: Core Subjects Science & Social Studies",
+        duration: "10 mins",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        summary: "Review key teaching strategies for science inquiry and social studies content in elementary and middle school classrooms.",
+        transcript: [
+          { time: "00:00", text: "Today we review social studies themes and hands-on science methods." }
+        ],
+        quiz: [
+          {
+            id: "texes-q6",
+            question: "Which approach is most aligned with inquiry-based science instruction?",
+            options: ["Reading a textbook chapter and answering the questions", "Guiding students to ask questions, perform experiments, and analyze data", "Memorizing the periodic table", "Watching the teacher perform a demonstration without participation"],
+            answer: 1,
+            explanation: "Inquiry-based science emphasizes student hands-on exploration, observation, and critical reasoning rather than passive learning."
+          }
+        ]
+      },
+      {
+        id: "texes-core-math-arts",
+        title: "TExES Lesson: Core Subjects Math & Fine Arts Integration",
+        duration: "10 mins",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        summary: "Focus on mathematical concepts, student-centered math manipulatives, and integrating arts in elementary curriculum.",
+        transcript: [
+          { time: "00:00", text: "Let's review manipulative-based math learning and fine arts integration." }
+        ],
+        quiz: [
+          {
+            id: "texes-q7",
+            question: "Which tool is best for helping early childhood students understand place value in mathematics?",
+            options: ["A graphing calculator", "Base-ten blocks", "A protractor", "A standard ruler"],
+            answer: 1,
+            explanation: "Concrete manipulatives like base-ten blocks visually represent ones, tens, and hundreds, helping students grasp place value concepts."
+          }
+        ]
+      },
+      {
+        id: "texes-ell-support",
+        title: "TExES Lesson: Supporting English Language Learners (ELLs)",
+        duration: "9 mins",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        summary: "Master ELPS standards, language acquisition theories, and sheltering techniques for Texas TExES exam preparation.",
+        transcript: [
+          { time: "00:00", text: "Hello candidates. Today we cover language acquisition theories and ELPS sheltering tools." }
+        ],
+        quiz: [
+          {
+            id: "texes-q8",
+            question: "Which of the following is a primary feature of sheltered instruction?",
+            options: ["Providing instruction entirely in the student's native language", "Making content comprehensible through visual aids, simplified vocabulary, and hands-on activities", "Enforcing English-only rules strictly without accommodations", "Exempting students from all assessments"],
+            answer: 1,
+            explanation: "Sheltered instruction focuses on making grade-level academic content comprehensible to ELLs while promoting language development."
+          }
+        ]
+      }
+    ],
+    flashcards: [
+      { id: "texes-fc1", term: "TEKS", definition: "Texas Essential Knowledge and Skills, the state standards outlining curriculum objectives." },
+      { id: "texes-fc2", term: "PPR", definition: "Pedagogy and Professional Responsibilities, the core framework tested for Texas educator certification." }
     ]
   }
 ];

@@ -36,7 +36,7 @@ export async function generateMetadata({ params }) {
       type: "website",
       images: [
         {
-          url: "https://prepsumit.com/images/og-image.webp",
+          url: "https://prepsumit.com/og-image.png",
           width: 1200,
           height: 630,
           alt: `${course.title} | PrepSumit`
@@ -47,7 +47,7 @@ export async function generateMetadata({ params }) {
       card: "summary_large_image",
       title,
       description,
-      images: ["https://prepsumit.com/images/og-image.webp"],
+      images: ["https://prepsumit.com/og-image.png"],
     }
   };
 }

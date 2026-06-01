@@ -121,12 +121,19 @@ function AppProvidersContent({ children }) {
       setActivePageState('teas');
       const teasCourse = coursesData.find(c => c.id === 'teas-prep');
       if (teasCourse) setSelectedCourseState(teasCourse);
-    } else if (path === '/catalog') {
+    } else if (path === '/catalog' || path === '/courses') {
       setActivePageState('catalog');
     } else if (path === '/login') {
       setActivePageState('login');
     } else if (path === '/signup') {
       setActivePageState('signup');
+      const examParam = searchParams.get('exam');
+      if (examParam) {
+        setSignupDetails(prev => ({
+          ...prev,
+          exam: examParam === 'others' ? 'Others' : examParam
+        }));
+      }
     } else if (path === '/checkout') {
       setActivePageState('checkout');
     } else if (path === '/dashboard') {

@@ -14,7 +14,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "https://prepsumit.com/images/og-image.webp",
+        url: "https://prepsumit.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "Login to Your PrepSumit Account | PrepSumit"
@@ -25,7 +25,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Login to Your PrepSumit Account | PrepSumit",
     description: "Log in to your PrepSumit account to access exam prep resources, practice tests, study plans, and learning tools.",
-    images: ["https://prepsumit.com/images/og-image.webp"],
+    images: ["https://prepsumit.com/og-image.png"],
   }
 };
 

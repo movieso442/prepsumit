@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { Check, Star, Play, FileText, Users, Award, ShieldCheck, ChevronRight, HelpCircle } from 'lucide-react';
 
 export default function CategoryLanding({ category, courses, onSelectCourse, onStartSignup, onBackToHome }) {
+  const [activeFaqIdx, setActiveFaqIdx] = useState(null);
   // Find courses matching this category
   const getFilteredCourses = () => {
     if (category.startsWith('subject-')) {
@@ -382,33 +384,94 @@ export default function CategoryLanding({ category, courses, onSelectCourse, onS
           Frequently Asked Questions
         </h2>
         
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <div className="card" style={{ padding: '24px' }}>
-            <h4 style={{ fontSize: '1.05rem', color: 'var(--primary-dark)', fontWeight: '800', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <HelpCircle size={16} style={{ color: 'var(--primary)' }} /> How do I get started with the free trial?
-            </h4>
-            <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: '1.5', margin: 0 }}>
-              You can start your risk-free trial in less than 2 minutes! Select any course, click 'Create an account', fill out the quick survey questions, and you will have full unlimited access to lessons, quizzes, and tests immediately.
-            </p>
-          </div>
-          <div className="card" style={{ padding: '24px' }}>
-            <h4 style={{ fontSize: '1.05rem', color: 'var(--primary-dark)', fontWeight: '800', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <HelpCircle size={16} style={{ color: 'var(--primary)' }} /> Can I cancel my membership at any time?
-            </h4>
-            <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: '1.5', margin: 0 }}>
-              Yes, absolutely! You can cancel your membership online with just a few clicks in your student dashboard. There are no long-term contracts, cancelation fees, or obligations.
-            </p>
-          </div>
-          {category === 'college-credit' && (
-            <div className="card" style={{ padding: '24px' }}>
-              <h4 style={{ fontSize: '1.05rem', color: 'var(--primary-dark)', fontWeight: '800', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <HelpCircle size={16} style={{ color: 'var(--primary)' }} /> How do course credits transfer?
-              </h4>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: '1.5', margin: 0 }}>
-                Our courses carry ACE and NCCRS recommendation status. Once you pass a course's online proctored exam, you request a transcript from us, which we send directly to your college registrar for standard credit conversion.
-              </p>
-            </div>
-          )}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          {[
+            {
+              question: "How do I get started with the free trial?",
+              answer: "You can start your risk-free trial in less than 2 minutes! Select any course, click 'Create an account', fill out the quick survey questions, and you will have full unlimited access to lessons, quizzes, and tests immediately."
+            },
+            {
+              question: "Can I cancel my membership at any time?",
+              answer: "Yes, absolutely! You can cancel your membership online with just a few clicks in your student dashboard. There are no long-term contracts, cancelation fees, or obligations."
+            },
+            ...(category === 'college-credit' ? [{
+              question: "How do course credits transfer?",
+              answer: "Our courses carry ACE and NCCRS recommendation status. Once you pass a course's online proctored exam, you request a transcript from us, which we send directly to your college registrar for standard credit conversion."
+            }] : [])
+          ].map((faq, idx) => {
+            const isExpanded = activeFaqIdx === idx;
+            return (
+              <div 
+                key={idx} 
+                className="card"
+                style={{ 
+                  display: 'flex', 
+                  flexDirection: 'column', 
+                  padding: '24px',
+                  overflow: 'hidden'
+                }}
+              >
+                <button
+                  onClick={() => setActiveFaqIdx(isExpanded ? null : idx)}
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    width: '100%',
+                    textAlign: 'left',
+                    background: 'none',
+                    border: 'none',
+                    padding: 0,
+                    cursor: 'pointer',
+                    fontFamily: 'inherit',
+                    color: 'var(--text-primary)'
+                  }}
+                >
+                  <h4 style={{ 
+                    fontSize: '1.05rem', 
+                    color: 'var(--primary-dark)', 
+                    fontWeight: '800', 
+                    margin: 0, 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    gap: '8px',
+                    flex: 1
+                  }}>
+                    <HelpCircle size={16} style={{ color: 'var(--primary)', flexShrink: 0 }} /> {faq.question}
+                  </h4>
+                  <span style={{
+                    display: 'inline-block',
+                    fontSize: '1.25rem',
+                    fontWeight: '900',
+                    fontFamily: 'monospace',
+                    transition: 'transform 0.2s ease',
+                    transform: isExpanded ? 'rotate(90deg)' : 'rotate(-90deg)',
+                    color: '#13809c',
+                    marginLeft: '16px',
+                    userSelect: 'none',
+                    flexShrink: 0
+                  }}>
+                    &gt;
+                  </span>
+                </button>
+                <div style={{
+                  maxHeight: isExpanded ? '300px' : '0px',
+                  transition: 'all 0.3s cubic-bezier(0, 1, 0, 1)',
+                  opacity: isExpanded ? 1 : 0
+                }}>
+                  <p style={{ 
+                    fontSize: '0.9rem', 
+                    color: 'var(--text-secondary)', 
+                    lineHeight: '1.5', 
+                    margin: '12px 0 0 0',
+                    paddingLeft: '24px'
+                  }}>
+                    {faq.answer}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 

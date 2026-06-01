@@ -25,11 +25,12 @@ export default function EmailPopup({ isOpen, onClose, onContinue }) {
   ];
   const exams = [
     'FTCE Professional Education Test',
-    'FTCE General Knowledge',
-    'Praxis Core Academic Skills',
-    'NCLEX-RN Exam',
-    'Real Estate Salesperson Exam',
-    'ASVAB Military Test',
+    'AP Calculus BC',
+    'Cell Biology',
+    'Introduction to Psychology',
+    'ATI TEAS Test Prep',
+    'RICA Test Prep',
+    'TExES Test Prep',
     'Other Exam'
   ];
 

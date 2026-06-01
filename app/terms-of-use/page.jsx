@@ -14,7 +14,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "https://prepsumit.com/images/og-image.webp",
+        url: "https://prepsumit.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "Terms of Use | PrepSumit"
@@ -25,7 +25,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Terms of Use | PrepSumit",
     description: "Read the PrepSumit Terms of Use for rules and conditions that apply when using prepsumit.com.",
-    images: ["https://prepsumit.com/images/og-image.webp"],
+    images: ["https://prepsumit.com/og-image.png"],
   }
 };
 

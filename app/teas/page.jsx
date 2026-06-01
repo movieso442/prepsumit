@@ -14,7 +14,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "https://prepsumit.com/images/og-image.webp",
+        url: "https://prepsumit.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "TEAS Test Prep & Practice Exams | PrepSumit"
@@ -25,7 +25,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "TEAS Test Prep & Practice Exams | PrepSumit",
     description: "Prepare for the Test of Essential Academic Skills (TEAS) nursing exam with PrepSumit study guides, practice tests, and guided lesson support.",
-    images: ["https://prepsumit.com/images/og-image.webp"],
+    images: ["https://prepsumit.com/og-image.png"],
   }
 };
 

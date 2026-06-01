@@ -19,36 +19,39 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 export const metadata = {
   metadataBase: new URL("https://prepsumit.com"),
   title: {
-    default: "PrepSumit | Online Courses for College Credit, Exam Prep & Test Preparation",
-    template: "%s | PrepSumit"
+    default: "PrepSumit | Online Exam Prep for FTCE, Praxis & Practice Tests",
+    template: "%s | PrepSumit",
   },
-  description: "PrepSumit is a leading online learning platform offering visual micro-lessons, practice quizzes, and custom study guides for exam prep, college credit, and teacher certification. Access 88,000+ courses and study on your schedule, risk-free.",
+  description: "PrepSumit helps learners prepare for exams with online study resources, FTCE prep, Praxis prep, practice tests, plans, and guided learning support.",
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-    apple: "/favicon.svg",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
   openGraph: {
-    type: "website",
-    url: "https://prepsumit.com/",
-    title: "PrepSumit | Online Courses for College Credit, Exam Prep & Test Preparation",
-    description: "PrepSumit is a leading online learning platform offering visual micro-lessons, practice quizzes, and custom study guides for exam prep, college credit, and teacher certification.",
+    title: "PrepSumit | Online Exam Prep for FTCE, Praxis & Practice Tests",
+    description: "Prepare for FTCE, Praxis, and other exams with PrepSumit online study resources and practice tests.",
+    url: "https://prepsumit.com",
     siteName: "PrepSumit",
     images: [
       {
-        url: "https://prepsumit.com/images/og-image.webp",
+        url: "https://prepsumit.com/og-image.png",
         width: 1200,
         height: 630,
-        alt: "PrepSumit logo"
-      }
+        alt: "PrepSumit online exam prep platform",
+      },
     ],
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    url: "https://prepsumit.com/",
-    title: "PrepSumit | Online Courses for College Credit, Exam Prep & Test Preparation",
-    description: "PrepSumit is a leading online learning platform offering visual micro-lessons, practice quizzes, and custom study guides for exam prep, college credit, and teacher certification.",
-    images: ["https://prepsumit.com/images/og-image.webp"],
+    title: "PrepSumit | Online Exam Prep for FTCE, Praxis & Practice Tests",
+    description: "Prepare for FTCE, Praxis, and other exams with PrepSumit online study resources and practice tests.",
+    images: ["https://prepsumit.com/og-image.png"],
   },
   alternates: {
     canonical: "https://prepsumit.com/",
@@ -78,11 +81,13 @@ export default function RootLayout({ children }) {
               "@type": "Organization",
               "name": "PrepSumit",
               "url": "https://prepsumit.com",
-              "logo": "https://prepsumit.com/images/prepsumit-logo.webp",
+              "logo": "https://prepsumit.com/icon.png",
+              "email": "support@prepsumit.com",
               "foundingDate": "2026",
               "description": "Online learning platform provides video lessons, practice questions, and custom study guides for exam preparation and mastering concepts. It offers college courses, K-12 educator resources, and professional development. AI tools personalize learning paths and assist with lesson planning.",
               "sameAs": [
-                "https://www.facebook.com/prepsumit",
+                "https://www.facebook.com/profile.php?id=61589155532244",
+                "https://facebook.com/groups/817080451384831/",
                 "https://twitter.com/prepsumit",
                 "https://www.youtube.com/@prepsumit"
               ]

@@ -76,6 +76,108 @@ export default function Footer({ setActivePage, onSelectCategoryLanding, onOpenI
         }
       `}</style>
 
+      {/* Community Connection Banner */}
+      <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto 40px auto',
+        backgroundColor: '#1f2937', // Dark slate gray background
+        borderRadius: '12px',
+        padding: '24px 32px',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        gap: '20px',
+        border: '1px solid rgba(255, 255, 255, 0.08)',
+        boxShadow: '0 4px 20px rgba(0,0,0,0.1)'
+      }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', maxWidth: '640px', textAlign: 'left' }}>
+          <h3 style={{
+            color: '#ffffff',
+            fontSize: '1.2rem',
+            fontWeight: '800',
+            fontFamily: "'Outfit', sans-serif",
+            margin: 0,
+            letterSpacing: '-0.01em'
+          }}>
+            Join our PrepSumit Community on Facebook
+          </h3>
+          <p style={{ color: '#9ca3af', fontSize: '0.85rem', lineHeight: '1.5', margin: 0 }}>
+            Follow our official page for daily study tips and news, or join our study group to collaborate, share materials, and pass your exams together!
+          </p>
+        </div>
+        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+          {/* Follow Page Button */}
+          <a 
+            href="https://www.facebook.com/profile.php?id=61589155532244"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              backgroundColor: '#1877f2', // Facebook blue
+              color: '#ffffff',
+              padding: '10px 20px',
+              borderRadius: '6px',
+              fontWeight: '700',
+              fontSize: '0.85rem',
+              textDecoration: 'none',
+              transition: 'all 0.2s'
+            }}
+            onMouseOver={e => {
+              e.currentTarget.style.backgroundColor = '#166fe5';
+              e.currentTarget.style.transform = 'translateY(-1px)';
+            }}
+            onMouseOut={e => {
+              e.currentTarget.style.backgroundColor = '#1877f2';
+              e.currentTarget.style.transform = 'none';
+            }}
+          >
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>
+            </svg>
+            Follow Page
+          </a>
+          
+          {/* Join Group Button */}
+          <a 
+            href="https://facebook.com/groups/817080451384831/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              backgroundColor: '#10b981', // green for community action
+              color: '#ffffff',
+              padding: '10px 20px',
+              borderRadius: '6px',
+              fontWeight: '700',
+              fontSize: '0.85rem',
+              textDecoration: 'none',
+              transition: 'all 0.2s'
+            }}
+            onMouseOver={e => {
+              e.currentTarget.style.backgroundColor = '#059669';
+              e.currentTarget.style.transform = 'translateY(-1px)';
+            }}
+            onMouseOut={e => {
+              e.currentTarget.style.backgroundColor = '#10b981';
+              e.currentTarget.style.transform = 'none';
+            }}
+          >
+            <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+            Join Group
+          </a>
+        </div>
+      </div>
+
       {/* Main Grid: Left columns & Right Working Scholars area */}
       <div className="footer-grid">
         
@@ -162,17 +264,61 @@ export default function Footer({ setActivePage, onSelectCategoryLanding, onOpenI
           
           {/* Social Icons */}
           <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-            <a href="#" aria-label="Facebook" style={{ color: '#ffffff', transition: 'opacity 0.15s' }} onMouseOver={e => e.currentTarget.style.opacity = 0.8} onMouseOut={e => e.currentTarget.style.opacity = 1}>
+            <a 
+              href="https://www.facebook.com/profile.php?id=61589155532244" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="Facebook Page"
+              title="Facebook Page"
+              style={{ color: '#ffffff', transition: 'opacity 0.15s' }} 
+              onMouseOver={e => e.currentTarget.style.opacity = 0.8} 
+              onMouseOut={e => e.currentTarget.style.opacity = 1}
+            >
               <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>
               </svg>
             </a>
-            <a href="#" aria-label="Twitter" style={{ color: '#ffffff', transition: 'opacity 0.15s' }} onMouseOver={e => e.currentTarget.style.opacity = 0.8} onMouseOut={e => e.currentTarget.style.opacity = 1}>
+            <a 
+              href="https://facebook.com/groups/817080451384831/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="Facebook Group"
+              title="Facebook Group"
+              style={{ color: '#ffffff', transition: 'opacity 0.15s' }} 
+              onMouseOver={e => e.currentTarget.style.opacity = 0.8} 
+              onMouseOut={e => e.currentTarget.style.opacity = 1}
+            >
+              <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </a>
+            <a 
+              href="https://twitter.com/prepsumit" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="Twitter"
+              title="Twitter (X)"
+              style={{ color: '#ffffff', transition: 'opacity 0.15s' }} 
+              onMouseOver={e => e.currentTarget.style.opacity = 0.8} 
+              onMouseOut={e => e.currentTarget.style.opacity = 1}
+            >
               <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
               </svg>
             </a>
-            <a href="#" aria-label="YouTube" style={{ color: '#ffffff', transition: 'opacity 0.15s' }} onMouseOver={e => e.currentTarget.style.opacity = 0.8} onMouseOut={e => e.currentTarget.style.opacity = 1}>
+            <a 
+              href="https://www.youtube.com/@prepsumit" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="YouTube"
+              title="YouTube"
+              style={{ color: '#ffffff', transition: 'opacity 0.15s' }} 
+              onMouseOver={e => e.currentTarget.style.opacity = 0.8} 
+              onMouseOut={e => e.currentTarget.style.opacity = 1}
+            >
               <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
               </svg>

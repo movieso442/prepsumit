@@ -14,7 +14,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "https://prepsumit.com/images/og-image.webp",
+        url: "https://prepsumit.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "Plans & Pricing | PrepSumit"
@@ -25,7 +25,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Plans & Pricing | PrepSumit",
     description: "View PrepSumit plans and pricing for online exam preparation, FTCE prep, Praxis prep, practice tests, and guided study support.",
-    images: ["https://prepsumit.com/images/og-image.webp"],
+    images: ["https://prepsumit.com/og-image.png"],
   }
 };
 

@@ -14,7 +14,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "https://prepsumit.com/images/og-image.webp",
+        url: "https://prepsumit.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "About Us | PrepSumit"
@@ -25,7 +25,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "About Us | PrepSumit",
     description: "Learn about PrepSumit's mission, online courses, certification prep, and learning pathways for educators and working scholars.",
-    images: ["https://prepsumit.com/images/og-image.webp"],
+    images: ["https://prepsumit.com/og-image.png"],
   }
 };
 

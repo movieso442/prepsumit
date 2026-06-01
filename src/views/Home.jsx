@@ -2255,6 +2255,47 @@ export default function Home({
 
       {/* 13. OUR INITIATIVES SECTION */}
       <section style={{ padding: '80px 24px 100px 24px', width: '100%', backgroundColor: '#ffffff' }}>
+        <style>{`
+          .initiative-card-body {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+            padding: 32px;
+            flex: 1;
+          }
+          .initiative-card-logo {
+            flex-shrink: 0;
+            width: 140px;
+          }
+          .initiative-card-text {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+          }
+          @media (max-width: 768px) {
+            .initiative-card-body {
+              flex-direction: column !important;
+              align-items: center !important;
+              text-align: center !important;
+              gap: 16px !important;
+              padding: 24px !important;
+            }
+            .initiative-card-logo {
+              width: 140px !important;
+              align-self: center !important;
+              display: flex !important;
+              justify-content: center !important;
+              align-items: center !important;
+            }
+            .initiative-card-text {
+              text-align: center !important;
+              align-items: center !important;
+            }
+            .initiative-card-text p {
+              margin: 0 0 12px 0 !important;
+            }
+          }
+        `}</style>
         <div style={{ maxWidth: '1100px', margin: '0 auto', textAlign: 'center' }}>
           <h2 style={{ 
             fontSize: '2.8rem', 
@@ -2294,11 +2335,9 @@ export default function Home({
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
                 />
               </div>
-              <div style={{ padding: '32px', display: 'flex', gap: '24px', alignItems: 'flex-start', flex: 1 }}>
+              <div className="initiative-card-body">
                 {/* Logo Placeholder */}
                 <div style={{ 
-                  flexShrink: 0, 
-                  width: '140px', 
                   height: '64px', 
                   backgroundColor: '#13809c', 
                   display: 'flex', 
@@ -2306,13 +2345,13 @@ export default function Home({
                   justifyContent: 'center',
                   borderRadius: '4px',
                   border: '1px solid #0f6c84'
-                }}>
-                  <span style={{ color: '#ffffff', fontSize: '0.65rem', fontWeight: 'bold', textAlign: 'center', lineHeight: '1.2', letterSpacing: '0.05em' }}>
+                }} className="initiative-card-logo">
+                  <span style={{ color: '#ffffff', fontSize: '0.65rem', fontWeight: 'bold', textAlign: 'center', lineHeight: '1.2', letterSpacing: '0.05em', padding: '0 8px' }}>
                     KEYS TO THE<br/>CLASSROOM
                   </span>
                 </div>
                 {/* Text Content */}
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <div className="initiative-card-text">
                   <p style={{ color: '#4a5568', fontSize: '1.05rem', lineHeight: '1.5', margin: '0 0 20px 0' }}>
                     Keys to the Classroom is our initiative that helps combat the teacher shortage across the nation.
                   </p>
@@ -2340,16 +2379,15 @@ export default function Home({
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
                 />
               </div>
-              <div style={{ padding: '32px', display: 'flex', gap: '24px', alignItems: 'flex-start', flex: 1 }}>
+              <div className="initiative-card-body">
                 {/* Logo Placeholder */}
                 <div style={{ 
-                  flexShrink: 0, 
-                  width: '140px', 
                   display: 'flex', 
                   alignItems: 'center', 
+                  justifyContent: 'center',
                   gap: '8px'
-                }}>
-                  <div style={{ display: 'flex', gap: '2px' }}>
+                }} className="initiative-card-logo">
+                  <div style={{ display: 'flex', gap: '2px', flexShrink: 0 }}>
                     <div style={{ width: '12px', height: '32px', backgroundColor: '#e53e3e', borderBottomLeftRadius: '4px' }}></div>
                     <div style={{ width: '12px', height: '24px', backgroundColor: '#dd6b20', alignSelf: 'flex-end' }}></div>
                   </div>
@@ -2358,7 +2396,7 @@ export default function Home({
                   </span>
                 </div>
                 {/* Text Content */}
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <div className="initiative-card-text">
                   <p style={{ color: '#4a5568', fontSize: '1.05rem', lineHeight: '1.5', margin: '0 0 20px 0' }}>
                     A new way for working adults and underserved community members to earn a college degree.
                   </p>
@@ -2374,14 +2412,10 @@ export default function Home({
               borderRadius: '8px', 
               backgroundColor: '#ffffff',
               border: '1px solid #d2dbe5',
-              padding: '32px', 
-              display: 'flex', 
-              gap: '24px', 
-              alignItems: 'center',
               boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
-            }} >
+            }} className="initiative-card-body">
               {/* Logo Placeholder */}
-              <div style={{ flexShrink: 0, width: '140px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }} className="initiative-card-logo">
                 <svg width="48" height="32" viewBox="0 0 24 24" fill="none" stroke="#13809c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
                   <path d="M6 12v5c3 3 9 3 12 0v-5" />
@@ -2394,7 +2428,7 @@ export default function Home({
                 </div>
               </div>
               {/* Text Content */}
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <div className="initiative-card-text">
                 <p style={{ color: '#4a5568', fontSize: '1.05rem', lineHeight: '1.5', margin: '0 0 12px 0' }}>
                   We offer over 40 different academic awards and scholarships to help make education more accessible.
                 </p>
@@ -2409,19 +2443,15 @@ export default function Home({
               borderRadius: '8px', 
               backgroundColor: '#ffffff',
               border: '1px solid #d2dbe5',
-              padding: '32px', 
-              display: 'flex', 
-              gap: '24px', 
-              alignItems: 'center',
               boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
-            }} >
+            }} className="initiative-card-body">
               {/* Logo Placeholder */}
-              <div style={{ flexShrink: 0, width: '140px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} className="initiative-card-logo">
                 <span style={{ color: '#718096', fontSize: '0.9rem', fontWeight: '900', letterSpacing: '0.05em', lineHeight: '1' }}>PLEDGE</span>
                 <span style={{ color: '#d69e2e', fontSize: '3.5rem', fontWeight: '900', lineHeight: '0.9' }}>1%</span>
               </div>
               {/* Text Content */}
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <div className="initiative-card-text">
                 <p style={{ color: '#4a5568', fontSize: '1.05rem', lineHeight: '1.5', margin: '0 0 12px 0' }}>
                   We are a proud Pledge 1% partner. Pledge 1% partners are leading organizations committed to making giving back a priority.
                 </p>
@@ -2487,17 +2517,25 @@ export default function Home({
               Blaze a trail. Learn something new.<br/>
               Opportunity's knocking. Will you answer?
             </p>
-            <button style={{ 
-              backgroundColor: '#ffb627', 
-              color: '#000000', 
-              padding: '14px 32px', 
-              borderRadius: '8px', 
-              fontSize: '1.1rem', 
-              fontWeight: '800',
-              border: 'none',
-              cursor: 'pointer',
-              fontFamily: "var(--font-body)"
-            }}>
+            <button 
+              onClick={() => onStartSignup()}
+              style={{ 
+                backgroundColor: '#ffb627', 
+                color: '#000000', 
+                padding: '14px 32px', 
+                borderRadius: '8px', 
+                fontSize: '1.1rem', 
+                fontWeight: '800',
+                border: 'none',
+                cursor: 'pointer',
+                fontFamily: "var(--font-body)",
+                transition: 'background-color 0.2s, transform 0.15s'
+              }}
+              onMouseOver={e => e.currentTarget.style.backgroundColor = '#fba919'}
+              onMouseOut={e => e.currentTarget.style.backgroundColor = '#ffb627'}
+              onMouseDown={e => e.currentTarget.style.transform = 'scale(0.97)'}
+              onMouseUp={e => e.currentTarget.style.transform = 'scale(1)'}
+            >
               Get started
             </button>
           </div>

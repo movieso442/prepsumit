@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Menu, X, ChevronDown, ChevronRight, Star, Check, Search, ArrowRight, Play, FileText, ArrowLeft } from 'lucide-react';
+import Image from 'next/image';
 
 export default function TeasLanding({ 
   onBackToHome, 
@@ -94,11 +95,13 @@ export default function TeasLanding({
               style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
               onClick={onBackToHome}
             >
-              <svg width="30" height="30" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 15 L85 50 L15 85 Z" fill="#13809c" />
-                <path d="M15 15 L50 50 L15 85 Z" fill="#1f4e5a" opacity="0.3" />
-                <path d="M50 50 L85 50 L15 85 Z" fill="#ffb627" />
-              </svg>
+              <Image 
+                src="/images/prepsumit-logo.webp" 
+                alt="PrepSumit logo" 
+                width={30} 
+                height={30} 
+                style={{ objectFit: 'contain' }}
+              />
               <span style={{ fontSize: '1.45rem', fontWeight: '800', color: '#1f4e5a', letterSpacing: '-0.03em' }}>
                 PrepSumit<span style={{ color: '#ffb627' }}>.com</span>
                 <span style={{ fontSize: '0.85rem', fontWeight: '600', color: '#007791', marginLeft: '6px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Nursing</span>

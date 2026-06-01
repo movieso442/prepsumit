@@ -5,7 +5,7 @@ export default function Signup({ initialData, onComplete, onBack }) {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
-    exam: initialData?.exam || 'FTCE Professional Education Test',
+    exam: (initialData?.exam === 'others' || initialData?.exam === 'Others') ? 'Others' : (initialData?.exam || 'FTCE Professional Education Test'),
     isFirstTime: 'yes', // 'yes' | 'no'
     attempts: '', // '1' | '2' | '3+'
     country: 'United States',
@@ -23,7 +23,7 @@ export default function Signup({ initialData, onComplete, onBack }) {
       setFormData(prev => ({
         ...prev,
         email: initialData.email || prev.email,
-        exam: initialData.exam || prev.exam
+        exam: (initialData.exam === 'others' || initialData.exam === 'Others') ? 'Others' : (initialData.exam || prev.exam)
       }));
     }
   }, [initialData]);
@@ -309,6 +309,35 @@ export default function Signup({ initialData, onComplete, onBack }) {
                       }}
                       className="input-focus-effect"
                     />
+                  </div>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    <label style={{ fontSize: '0.9rem', fontWeight: '700', color: '#1f4e5a' }}>Exam / Course to Prepare For</label>
+                    <select
+                      value={formData.exam}
+                      onChange={e => setFormData({ ...formData, exam: e.target.value })}
+                      style={{
+                        padding: '12px 16px',
+                        border: '1.5px solid #ccd6e0',
+                        borderRadius: '4px',
+                        fontSize: '0.95rem',
+                        outline: 'none',
+                        backgroundColor: '#ffffff',
+                        color: '#222222',
+                        cursor: 'pointer',
+                        transition: 'border-color 0.2s'
+                      }}
+                      className="input-focus-effect"
+                    >
+                      <option value="FTCE Professional Education Test">FTCE Professional Education Test</option>
+                      <option value="AP Calculus BC">AP Calculus BC</option>
+                      <option value="Cell Biology">Cell Biology</option>
+                      <option value="Introduction to Psychology">Introduction to Psychology</option>
+                      <option value="ATI TEAS Test Prep">ATI TEAS Test Prep</option>
+                      <option value="RICA Test Prep">RICA Test Prep</option>
+                      <option value="TExES Test Prep">TExES Test Prep</option>
+                      <option value="Others">Others</option>
+                    </select>
                   </div>
                 </div>
               )}

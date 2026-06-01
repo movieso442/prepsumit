@@ -23,6 +23,7 @@ export default function FtceCourse({
   const [expandedChapters, setExpandedChapters] = useState({
     1: true, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false, 8: false, 9: false, 10: false
   });
+  const [activeFaqIdx, setActiveFaqIdx] = useState(null);
 
   // Expand / Collapse all accordion actions
   const expandAllChapters = () => {
@@ -611,22 +612,76 @@ export default function FtceCourse({
               </p>
             </div>
 
-            {/* FAQs List Section (Matching Screenshot 573 exactly - flat list of Q&A blocks) */}
+            {/* FAQs List Section (Interactive accordion with animated rotation of greater than sign) */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginTop: '10px' }}>
               <h3 style={{ fontSize: '1.65rem', fontWeight: '800', color: 'var(--text-primary)', margin: '0 0 10px 0' }}>
                 FAQs
               </h3>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                {faqList.map((faq, idx) => (
-                  <div key={idx} style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                    <h4 style={{ fontSize: '1.05rem', fontWeight: '700', color: 'var(--text-primary)', margin: 0, lineHeight: '1.4' }}>
-                      {faq.question}
-                    </h4>
-                    <p style={{ fontSize: '0.94rem', color: 'var(--text-secondary)', lineHeight: '1.6', margin: 0 }}>
-                      {faq.answer}
-                    </p>
-                  </div>
-                ))}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                {faqList.map((faq, idx) => {
+                  const isExpanded = activeFaqIdx === idx;
+                  return (
+                    <div 
+                      key={idx} 
+                      style={{ 
+                        display: 'flex', 
+                        flexDirection: 'column', 
+                        borderBottom: '1px solid #e2e8f0', 
+                        paddingBottom: '12px',
+                        overflow: 'hidden'
+                      }}
+                    >
+                      <button
+                        onClick={() => setActiveFaqIdx(isExpanded ? null : idx)}
+                        style={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                          width: '100%',
+                          textAlign: 'left',
+                          background: 'none',
+                          border: 'none',
+                          padding: '8px 0',
+                          cursor: 'pointer',
+                          fontFamily: 'inherit',
+                          color: 'var(--text-primary)'
+                        }}
+                      >
+                        <span style={{ fontSize: '1.05rem', fontWeight: '700', lineHeight: '1.4' }}>
+                          {faq.question}
+                        </span>
+                        <span style={{
+                          display: 'inline-block',
+                          fontSize: '1.25rem',
+                          fontWeight: '900',
+                          fontFamily: 'monospace',
+                          transition: 'transform 0.2s ease',
+                          transform: isExpanded ? 'rotate(90deg)' : 'rotate(-90deg)',
+                          color: '#13809c',
+                          marginLeft: '16px',
+                          userSelect: 'none'
+                        }}>
+                          &gt;
+                        </span>
+                      </button>
+                      <div style={{
+                        maxHeight: isExpanded ? '500px' : '0px',
+                        transition: 'all 0.3s cubic-bezier(0, 1, 0, 1)',
+                        opacity: isExpanded ? 1 : 0
+                      }}>
+                        <p style={{ 
+                          fontSize: '0.94rem', 
+                          color: 'var(--text-secondary)', 
+                          lineHeight: '1.6', 
+                          margin: '8px 0 0 0',
+                          paddingRight: '24px'
+                        }}>
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
