@@ -1,7 +1,7 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, Suspense } from 'react';
-import { usePathname, useSearchParams, useRouter } from 'next/navigation';
+import { Component, createContext, useContext, useState, useEffect } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import Navbar from '@/src/components/Navbar';
 import Footer from '@/src/components/Footer';
 import dynamic from 'next/dynamic';
@@ -18,11 +18,75 @@ export function useAppContext() {
   return useContext(AppContext);
 }
 
-// Inner wrapper to consume search params inside Suspense safely in Next.js
+function readSearchParams() {
+  if (typeof window === 'undefined') {
+    return new URLSearchParams();
+  }
+
+  return new URLSearchParams(window.location.search);
+}
+
+class AppErrorBoundary extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error('PrepSumit app render failed:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div
+          role="alert"
+          style={{
+            minHeight: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '16px',
+            padding: '32px',
+            textAlign: 'center',
+            color: '#1f2937',
+            background: '#ffffff'
+          }}
+        >
+          <p style={{ margin: 0, fontSize: '1rem', fontWeight: 600 }}>
+            Something went wrong. Please refresh the page.
+          </p>
+          <button
+            type="button"
+            onClick={() => window.location.reload()}
+            style={{
+              border: 'none',
+              borderRadius: '6px',
+              padding: '10px 16px',
+              fontWeight: 700,
+              color: '#ffffff',
+              background: '#1f4e5a',
+              cursor: 'pointer'
+            }}
+          >
+            Reload page
+          </button>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
+}
+
 function AppProvidersContent({ children }) {
   const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   // Core App States
   const [activePage, setActivePageState] = useState('home');
@@ -106,87 +170,93 @@ function AppProvidersContent({ children }) {
 
   // Synchronize Next.js URL paths to local React state (supports direct load & deep linking)
   useEffect(() => {
-    if (!pathname) return;
-    const path = pathname.toLowerCase();
-    const q = searchParams.get('q') || '';
+    try {
+      if (!pathname) return;
+      const path = pathname.toLowerCase();
+      const searchParams = readSearchParams();
+      const q = searchParams.get('q') || '';
 
-    if (path === '/' || path === '') {
-      setActivePageState('home');
-      setSearchQueryState(q);
-    } else if (path === '/ftce') {
-      setActivePageState('ftce');
-      const ftceCourse = coursesData.find(c => c.id === 'ftce-professional-education-test');
-      if (ftceCourse) setSelectedCourseState(ftceCourse);
-    } else if (path === '/teas') {
-      setActivePageState('teas');
-      const teasCourse = coursesData.find(c => c.id === 'teas-prep');
-      if (teasCourse) setSelectedCourseState(teasCourse);
-    } else if (path === '/catalog' || path === '/courses') {
-      setActivePageState('catalog');
-    } else if (path === '/login') {
-      setActivePageState('login');
-    } else if (path === '/signup') {
-      setActivePageState('signup');
-      const examParam = searchParams.get('exam');
-      if (examParam) {
-        setSignupDetails(prev => ({
-          ...prev,
-          exam: examParam === 'others' ? 'Others' : examParam
-        }));
-      }
-    } else if (path === '/checkout') {
-      setActivePageState('checkout');
-    } else if (path === '/dashboard') {
-      setActivePageState('dashboard');
-    } else if (path === '/plans' || path.includes('/academy/plans.html') || path === '/pricing' || path === '/plans-pricing') {
-      setActivePageState('pricing');
-    } else if (path === '/praxis') {
-      setActivePageState('praxis');
-      const praxisCourse = coursesData.find(c => c.id === 'praxis-core');
-      if (praxisCourse) setSelectedCourseState(praxisCourse);
-    } else if (path === '/about') {
-      setActivePageState('about');
-    } else if (path === '/contact') {
-      setActivePageState('contact');
-    } else if (path === '/privacy-policy') {
-      setActivePageState('privacy');
-    } else if (path === '/terms-of-use') {
-      setActivePageState('terms');
-    } else if (path === '/search') {
-      setActivePageState('search');
-      setSearchQueryState(q);
-    } else if (path.startsWith('/courses/')) {
-      const parts = pathname.split('/');
-      const courseId = parts[2];
-      const found = coursesData.find(c => c.id.toLowerCase() === courseId.toLowerCase());
-      if (found) {
-        setSelectedCourseState(found);
-        if (parts[3] === 'lessons' && parts[4]) {
-          const lessonId = parts[4];
-          const foundLesson = found.lessons?.find(l => l.id.toLowerCase() === lessonId.toLowerCase());
-          if (foundLesson) {
-            setSelectedLessonState(foundLesson);
-            setActivePageState('lesson');
-            return;
-          }
-        }
-        if (courseId === 'ftce-professional-education-test') {
-          setActivePageState('ftce');
-        } else if (courseId === 'teas-prep') {
-          setActivePageState('teas');
-        } else {
-          setActivePageState('detail');
-        }
-      } else {
+      if (path === '/' || path === '') {
+        setActivePageState('home');
+        setSearchQueryState(q);
+      } else if (path === '/ftce') {
+        setActivePageState('ftce');
+        const ftceCourse = coursesData.find(c => c.id === 'ftce-professional-education-test');
+        if (ftceCourse) setSelectedCourseState(ftceCourse);
+      } else if (path === '/teas') {
+        setActivePageState('teas');
+        const teasCourse = coursesData.find(c => c.id === 'teas-prep');
+        if (teasCourse) setSelectedCourseState(teasCourse);
+      } else if (path === '/catalog' || path === '/courses') {
         setActivePageState('catalog');
+      } else if (path === '/login') {
+        setActivePageState('login');
+      } else if (path === '/signup') {
+        setActivePageState('signup');
+        const examParam = searchParams.get('exam');
+        if (examParam) {
+          setSignupDetails(prev => ({
+            ...prev,
+            exam: examParam === 'others' ? 'Others' : examParam
+          }));
+        }
+      } else if (path === '/checkout') {
+        setActivePageState('checkout');
+      } else if (path === '/dashboard') {
+        setActivePageState('dashboard');
+      } else if (path === '/plans' || path.includes('/academy/plans.html') || path === '/pricing' || path === '/plans-pricing') {
+        setActivePageState('pricing');
+      } else if (path === '/praxis') {
+        setActivePageState('praxis');
+        const praxisCourse = coursesData.find(c => c.id === 'praxis-core');
+        if (praxisCourse) setSelectedCourseState(praxisCourse);
+      } else if (path === '/about') {
+        setActivePageState('about');
+      } else if (path === '/contact') {
+        setActivePageState('contact');
+      } else if (path === '/privacy-policy') {
+        setActivePageState('privacy');
+      } else if (path === '/terms-of-use') {
+        setActivePageState('terms');
+      } else if (path === '/search') {
+        setActivePageState('search');
+        setSearchQueryState(q);
+      } else if (path.startsWith('/courses/')) {
+        const parts = pathname.split('/');
+        const courseId = parts[2];
+        const found = coursesData.find(c => c.id.toLowerCase() === courseId.toLowerCase());
+        if (found) {
+          setSelectedCourseState(found);
+          if (parts[3] === 'lessons' && parts[4]) {
+            const lessonId = parts[4];
+            const foundLesson = found.lessons?.find(l => l.id.toLowerCase() === lessonId.toLowerCase());
+            if (foundLesson) {
+              setSelectedLessonState(foundLesson);
+              setActivePageState('lesson');
+              return;
+            }
+          }
+          if (courseId === 'ftce-professional-education-test') {
+            setActivePageState('ftce');
+          } else if (courseId === 'teas-prep') {
+            setActivePageState('teas');
+          } else {
+            setActivePageState('detail');
+          }
+        } else {
+          setActivePageState('catalog');
+        }
+      } else if (path.startsWith('/category/')) {
+        const parts = pathname.split('/');
+        const cat = parts[2] || '';
+        setLandingCategoryState(cat);
+        setActivePageState('landing');
       }
-    } else if (path.startsWith('/category/')) {
-      const parts = pathname.split('/');
-      const cat = parts[2] || '';
-      setLandingCategoryState(cat);
-      setActivePageState('landing');
+    } catch (error) {
+      console.error('App route synchronization failed:', error);
+      setActivePageState('home');
     }
-  }, [pathname, searchParams]);
+  }, [pathname]);
 
   // Synchronize React state modifications back to Next.js route actions
   const setActivePage = (page) => {
@@ -486,8 +556,8 @@ function AppProvidersContent({ children }) {
 
 export default function AppProviders({ children }) {
   return (
-    <Suspense fallback={<div style={{ padding: '40px', textAlign: 'center', color: '#718096' }}>Loading PrepSumit...</div>}>
+    <AppErrorBoundary>
       <AppProvidersContent>{children}</AppProvidersContent>
-    </Suspense>
+    </AppErrorBoundary>
   );
 }
