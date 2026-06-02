@@ -103,42 +103,10 @@ export default function Footer({ setActivePage, onSelectCategoryLanding, onOpenI
             Join our PrepSumit Community on Facebook
           </h3>
           <p style={{ color: '#9ca3af', fontSize: '0.85rem', lineHeight: '1.5', margin: 0 }}>
-            Follow our official page for daily study tips and news, or join our study group to collaborate, share materials, and pass your exams together!
+            Join our study group to collaborate, share materials, and pass your exams together!
           </p>
         </div>
         <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          {/* Follow Page Button */}
-          <a 
-            href="https://www.facebook.com/profile.php?id=61589155532244"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              backgroundColor: '#1877f2', // Facebook blue
-              color: '#ffffff',
-              padding: '10px 20px',
-              borderRadius: '6px',
-              fontWeight: '700',
-              fontSize: '0.85rem',
-              textDecoration: 'none',
-              transition: 'all 0.2s'
-            }}
-            onMouseOver={e => {
-              e.currentTarget.style.backgroundColor = '#166fe5';
-              e.currentTarget.style.transform = 'translateY(-1px)';
-            }}
-            onMouseOut={e => {
-              e.currentTarget.style.backgroundColor = '#1877f2';
-              e.currentTarget.style.transform = 'none';
-            }}
-          >
-            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>
-            </svg>
-            Follow Page
-          </a>
           
           {/* Join Group Button */}
           <a 
@@ -262,22 +230,7 @@ export default function Footer({ setActivePage, onSelectCategoryLanding, onOpenI
         {/* Right Working Scholars section */}
         <div className="footer-col-right">
           
-          {/* Social Icons */}
           <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-            <a 
-              href="https://www.facebook.com/profile.php?id=61589155532244" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              aria-label="Facebook Page"
-              title="Facebook Page"
-              style={{ color: '#ffffff', transition: 'opacity 0.15s' }} 
-              onMouseOver={e => e.currentTarget.style.opacity = 0.8} 
-              onMouseOut={e => e.currentTarget.style.opacity = 1}
-            >
-              <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>
-              </svg>
-            </a>
             <a 
               href="https://facebook.com/groups/817080451384831/" 
               target="_blank" 

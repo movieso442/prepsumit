@@ -243,13 +243,7 @@ export default function CourseCatalog({ courses, searchQuery, setSearchQuery, on
                           <span>•</span>
                           <span>{course.duration}</span>
                         </div>
-                        <a 
-                          href={courseHref}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            e.preventDefault();
-                            onSelectCourse(course);
-                          }}
+                        <span 
                           style={{
                             backgroundColor: '#13809c',
                             color: '#ffffff',
@@ -267,7 +261,7 @@ export default function CourseCatalog({ courses, searchQuery, setSearchQuery, on
                           onMouseOut={e => e.target.style.backgroundColor = '#13809c'}
                         >
                           View Lessons ({course.lessonsCount})
-                        </a>
+                        </span>
                       </div>
 
                     </div>

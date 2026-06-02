@@ -160,16 +160,17 @@ export default function CategoryLanding({ category, courses, onSelectCourse, onS
         <div style={{ position: 'absolute', bottom: '-20%', right: '-10%', width: '400px', height: '400px', borderRadius: '50%', background: 'rgba(255,255,255,0.03)', pointerEvents: 'none' }}></div>
 
         <div style={{ maxWidth: '850px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '24px', position: 'relative', zIndex: 2 }}>
-          <h1 style={{ fontSize: '3rem', fontWeight: '900', lineHeight: '1.15', fontFamily: 'var(--font-heading)', letterSpacing: '-0.02em' }}>
+          <h1 className="responsive-hero-title" style={{ letterSpacing: '-0.02em', margin: '0' }}>
             {landingData.title}
           </h1>
-          <p style={{ fontSize: '1.2rem', opacity: 0.9, lineHeight: '1.5', maxWidth: '720px', margin: '0 auto' }}>
+          <p className="responsive-hero-desc" style={{ maxWidth: '720px', margin: '0 auto' }}>
             {landingData.subtitle}
           </p>
 
           <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', marginTop: '12px' }} className="flex-col-mobile">
             <button 
               onClick={onStartSignup}
+              className="full-width-mobile"
               style={{
                 backgroundColor: landingData.accentColor,
                 color: '#222222',
@@ -189,6 +190,7 @@ export default function CategoryLanding({ category, courses, onSelectCourse, onS
             </button>
             <button 
               onClick={onBackToHome}
+              className="full-width-mobile"
               style={{
                 backgroundColor: 'transparent',
                 color: '#ffffff',
@@ -211,23 +213,19 @@ export default function CategoryLanding({ category, courses, onSelectCourse, onS
 
       {/* 2. STATS ROW */}
       <section style={{ maxWidth: '1200px', margin: '0 auto', width: '100%', padding: '0 24px' }}>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '24px',
+        <div className="category-landing-stats" style={{
           backgroundColor: '#ffffff',
           border: '1.5px solid #d2dbe5',
           borderRadius: '8px',
           padding: '32px 24px',
           textAlign: 'center',
           boxShadow: 'var(--shadow-md)'
-        }} className="flex-col-mobile">
+        }}>
           {landingData.stats.map((stat, idx) => (
             <div key={idx} style={{ 
               display: 'flex', 
               flexDirection: 'column', 
-              gap: '6px',
-              borderRight: idx < 2 ? '1px solid #e2e8f0' : 'none'
+              gap: '6px'
             }} className="no-border-mobile">
               <span style={{ fontSize: '2.5rem', fontWeight: '900', color: 'var(--primary-dark)', lineHeight: '1' }}>
                 {stat.value}
@@ -241,7 +239,7 @@ export default function CategoryLanding({ category, courses, onSelectCourse, onS
       </section>
 
       {/* 3. VALUE PROPOSITION & BENEFITS */}
-      <section style={{ maxWidth: '1200px', margin: '0 auto', width: '100%', padding: '0 24px', display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '48px', alignItems: 'center' }} className="flex-col-mobile">
+      <section className="category-landing-benefits" style={{ maxWidth: '1200px', margin: '0 auto', width: '100%', padding: '0 24px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
           <h2 style={{ fontSize: '2.2rem', color: '#1f4e5a', fontWeight: '900', fontFamily: 'var(--font-heading)' }}>
             Why Students Excel on PrepSumit
@@ -300,7 +298,7 @@ export default function CategoryLanding({ category, courses, onSelectCourse, onS
         </div>
 
         {matchedCourses.length > 0 ? (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: '24px' }}>
+          <div className="category-landing-courses">
             {matchedCourses.map(course => {
               const courseHref = course.id === 'ftce-professional-education-test' ? '/ftce' : (course.id === 'teas-prep' ? '/teas' : `/courses/${course.id}`);
               return (

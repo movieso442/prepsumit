@@ -1410,5 +1410,60 @@ button, input, select {
   scrollbar-width: none;
 }
 
+/* Category Landing Page Responsiveness Styles */
+.category-landing-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.category-landing-benefits {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.category-landing-courses {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 24px;
+}
+
+.no-border-mobile {
+  border-right: 1px solid #e2e8f0;
+}
+.no-border-mobile:last-child {
+  border-right: none;
+}
+
+@media (max-width: 768px) {
+  .category-landing-stats {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .category-landing-benefits {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .category-landing-courses {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .no-border-mobile {
+    border-right: none !important;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 16px;
+  }
+  .no-border-mobile:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}
+
+
 
 

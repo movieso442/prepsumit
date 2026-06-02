@@ -86,7 +86,6 @@ export default function RootLayout({ children }) {
               "foundingDate": "2026",
               "description": "Online learning platform provides video lessons, practice questions, and custom study guides for exam preparation and mastering concepts. It offers college courses, K-12 educator resources, and professional development. AI tools personalize learning paths and assist with lesson planning.",
               "sameAs": [
-                "https://www.facebook.com/profile.php?id=61589155532244",
                 "https://facebook.com/groups/817080451384831/",
                 "https://twitter.com/prepsumit",
                 "https://www.youtube.com/@prepsumit"
