@@ -1410,6 +1410,535 @@ button, input, select {
   scrollbar-width: none;
 }
 
+/* FTCE landing page */
+.ftce-landing {
+  color: var(--text-secondary);
+  background: #ffffff;
+  font-family: var(--font-body);
+}
+
+.ftce-landing h1,
+.ftce-landing h2,
+.ftce-landing h3 {
+  letter-spacing: 0;
+}
+
+.ftce-container {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.ftce-hero {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #0c2330;
+  color: #ffffff;
+}
+
+.ftce-hero-bg-image {
+  object-fit: cover;
+  object-position: right center;
+  opacity: 0.38;
+}
+
+.ftce-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(12, 35, 48, 0.96) 0%, rgba(12, 35, 48, 0.86) 46%, rgba(12, 35, 48, 0.46) 100%),
+    rgba(12, 35, 48, 0.34);
+}
+
+.ftce-hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  align-items: center;
+  min-height: 560px;
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+.ftce-hero-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  max-width: 760px;
+}
+
+.ftce-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.ftce-breadcrumb a {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.ftce-eyebrow,
+.ftce-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.ftce-hero .ftce-eyebrow {
+  color: #ffcf66;
+}
+
+.ftce-hero h1 {
+  color: #ffffff;
+  font-size: 3.1rem;
+  line-height: 1.08;
+  font-weight: 900;
+  max-width: 760px;
+}
+
+.ftce-hero-text {
+  max-width: 680px;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1.12rem;
+  line-height: 1.72;
+}
+
+.ftce-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 8px;
+}
+
+.ftce-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 11px 18px;
+  border-radius: 4px;
+  font-size: 0.94rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: background-color 0.18s, border-color 0.18s, transform 0.18s;
+}
+
+.ftce-button:hover {
+  transform: translateY(-1px);
+}
+
+.ftce-button-primary {
+  background: var(--accent);
+  color: #222222;
+  border: 1px solid var(--accent);
+}
+
+.ftce-button-primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.ftce-button-secondary {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+}
+
+.ftce-button-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.ftce-section {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 72px 0;
+  background: #ffffff;
+}
+
+.ftce-section:nth-of-type(odd) {
+  background: #f8fafc;
+}
+
+.ftce-section-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 760px;
+  margin-bottom: 30px;
+}
+
+.ftce-section-heading h2,
+.ftce-split h2,
+.ftce-guide-main h2,
+.ftce-florida h2,
+.ftce-internal-links h2 {
+  color: var(--primary-dark);
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: 850;
+}
+
+.ftce-section-heading p,
+.ftce-split p,
+.ftce-guide-block p,
+.ftce-florida p {
+  color: var(--text-secondary);
+  font-size: 0.98rem;
+  line-height: 1.76;
+}
+
+.ftce-study-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.ftce-study-item {
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid #dbe4ee;
+  border-radius: 6px;
+  background: #ffffff;
+  color: var(--text-primary);
+  font-size: 0.92rem;
+  font-weight: 750;
+}
+
+.ftce-study-item svg {
+  color: #10b981;
+  flex: 0 0 auto;
+}
+
+.ftce-tool-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.ftce-tool-card {
+  min-height: 218px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px;
+  border: 1px solid #dbe4ee;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
+}
+
+.ftce-tool-icon,
+.ftce-plan-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: var(--primary-dark);
+  background: #e8f6f8;
+}
+
+.ftce-tool-card:nth-child(2) .ftce-tool-icon {
+  background: #fff4d9;
+  color: #8a5a00;
+}
+
+.ftce-tool-card:nth-child(3) .ftce-tool-icon {
+  background: #e9f7ef;
+  color: #0f6848;
+}
+
+.ftce-tool-card:nth-child(4) .ftce-tool-icon {
+  background: #eaf1ff;
+  color: #254f91;
+}
+
+.ftce-tool-card h3,
+.ftce-guide-block h3,
+.ftce-study-plan h3,
+.ftce-faq-item h3 {
+  color: var(--text-primary);
+  font-size: 1.08rem;
+  font-weight: 820;
+}
+
+.ftce-tool-card p,
+.ftce-faq-item p,
+.ftce-study-plan li {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.68;
+}
+
+.ftce-free-practice {
+  background: #f1f8fa !important;
+}
+
+.ftce-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 32px;
+  padding-top: 34px;
+  padding-bottom: 34px;
+}
+
+.ftce-split > div {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 760px;
+}
+
+.ftce-guide-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(290px, 0.75fr);
+  gap: 36px;
+  align-items: start;
+}
+
+.ftce-guide-main {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.ftce-guide-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #dbe4ee;
+}
+
+.ftce-guide-block:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.ftce-study-plan {
+  position: sticky;
+  top: 104px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  border: 1px solid #dbe4ee;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.07);
+}
+
+.ftce-study-plan ol {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 20px;
+}
+
+.ftce-study-plan li::marker {
+  color: var(--primary);
+  font-weight: 800;
+}
+
+.ftce-florida {
+  background: #0c2330 !important;
+  color: #ffffff;
+}
+
+.ftce-florida-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
+  gap: 32px;
+  align-items: center;
+}
+
+.ftce-florida h2,
+.ftce-florida p {
+  color: #ffffff;
+}
+
+.ftce-florida p {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.ftce-florida-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  line-height: 1.68;
+}
+
+.ftce-florida-note svg {
+  color: var(--accent);
+  flex: 0 0 auto;
+  margin-top: 2px;
+}
+
+.ftce-faq-wrap {
+  max-width: 960px;
+}
+
+.ftce-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ftce-faq-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px 0;
+  border-bottom: 1px solid #dbe4ee;
+}
+
+.ftce-internal-links {
+  padding-top: 44px;
+  padding-bottom: 44px;
+  background: #ffffff !important;
+}
+
+.ftce-internal-links h2 {
+  margin-bottom: 18px;
+  font-size: 1.45rem;
+}
+
+.ftce-link-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ftce-link-grid a {
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid #dbe4ee;
+  border-radius: 6px;
+  background: #ffffff;
+  color: var(--primary-dark);
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: border-color 0.18s, color 0.18s, transform 0.18s;
+}
+
+.ftce-link-grid a:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 980px) {
+  .ftce-study-list,
+  .ftce-tool-grid,
+  .ftce-link-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ftce-guide-grid,
+  .ftce-florida-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .ftce-study-plan {
+    position: static;
+  }
+}
+
+@media (max-width: 720px) {
+  .ftce-container {
+    padding: 0 18px;
+  }
+
+  .ftce-hero,
+  .ftce-hero-grid {
+    min-height: 520px;
+  }
+
+  .ftce-hero-grid {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  .ftce-hero-overlay {
+    background: rgba(12, 35, 48, 0.86);
+  }
+
+  .ftce-hero h1 {
+    font-size: 2.18rem;
+    line-height: 1.14;
+  }
+
+  .ftce-hero-text {
+    font-size: 1rem;
+  }
+
+  .ftce-section {
+    padding: 54px 0;
+  }
+
+  .ftce-section-heading h2,
+  .ftce-split h2,
+  .ftce-guide-main h2,
+  .ftce-florida h2 {
+    font-size: 1.62rem;
+  }
+
+  .ftce-split {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .ftce-split .ftce-button,
+  .ftce-hero-actions .ftce-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .ftce-study-list,
+  .ftce-tool-grid,
+  .ftce-link-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Category Landing Page Responsiveness Styles */
 .category-landing-stats {
   display: grid;
